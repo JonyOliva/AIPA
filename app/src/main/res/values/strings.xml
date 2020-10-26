@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">AIPA</string>
+    <string name="welcome">¡Bienvenido a AIPA!</string>
+    <string name="fichaDiaria">Ficha Diaria</string>
+    <string name="calendario">Calendario</string>
+    <string name="config">Configuración</string>
 </resources>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="ingredientes">
+        <item>"Lechuga"</item>
+        <item>"Aceitunas"</item>
+        <item>"Limon"</item>
+        <item>"Nueces"</item>
+        <item>"Avena"</item>
+        <item>"Tomate"</item>
+    </array>
+</resources>

@@ -2,17 +2,81 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/monthHeaderText"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:gravity="center"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtDom"
+        android:layout_width="56dp"
+        android:layout_height="wrap_content"
+        android:text="Domingo"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/txtLun"
+        app:layout_constraintTop_toBottomOf="@+id/monthHeaderText" />
+
+    <TextView
+        android:id="@+id/txtLun"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lunes"
+        app:layout_constraintLeft_toRightOf="@+id/txtDom"
+        app:layout_constraintRight_toLeftOf="@+id/txtMar"
+        app:layout_constraintTop_toBottomOf="@+id/monthHeaderText"/>
+
+    <TextView
+        android:id="@+id/txtMar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Martes"
+        app:layout_constraintLeft_toRightOf="@+id/txtLun"
+        app:layout_constraintRight_toLeftOf="@id/txtMie"
+        app:layout_constraintTop_toBottomOf="@+id/monthHeaderText"/>
+
+    <TextView
+        android:id="@+id/txtMie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Miércoles"
+        app:layout_constraintLeft_toRightOf="@+id/txtMar"
+        app:layout_constraintRight_toLeftOf="@+id/txtJue"
+        app:layout_constraintTop_toBottomOf="@+id/monthHeaderText"/>
+
+    <TextView
+        android:id="@+id/txtJue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Jueves"
+        app:layout_constraintLeft_toRightOf="@+id/txtMie"
+        app:layout_constraintRight_toLeftOf="@+id/txtVie"
+        app:layout_constraintTop_toBottomOf="@+id/monthHeaderText"/>
+
+    <TextView
+        android:id="@+id/txtVie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Viernes"
+        app:layout_constraintLeft_toRightOf="@+id/txtJue"
+        app:layout_constraintRight_toLeftOf="@+id/txtSab"
+        app:layout_constraintTop_toBottomOf="@+id/monthHeaderText"/>
+
+    <TextView
+        android:id="@+id/txtSab"
+        android:layout_width="48dp"
+        android:layout_height="wrap_content"
+        android:text="Sábado"
+        app:layout_constraintLeft_toRightOf="@+id/txtVie"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/monthHeaderText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

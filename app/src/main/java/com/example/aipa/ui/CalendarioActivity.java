@@ -1,7 +1,6 @@
 package com.example.aipa.ui;
 
 import android.graphics.Color;
-import android.icu.text.DateFormatSymbols;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -12,18 +11,15 @@ import com.example.aipa.R;
 import com.kizitonwose.calendarview.CalendarView;
 import com.kizitonwose.calendarview.model.CalendarDay;
 import com.kizitonwose.calendarview.model.CalendarMonth;
+import com.kizitonwose.calendarview.model.DayOwner;
 import com.kizitonwose.calendarview.ui.DayBinder;
 import com.kizitonwose.calendarview.ui.MonthHeaderFooterBinder;
-import com.kizitonwose.calendarview.ui.ViewContainer;
 
-import java.text.SimpleDateFormat;
 import java.time.DayOfWeek;
-import java.time.LocalDate;
 import java.time.Month;
 import java.time.YearMonth;
 import java.time.format.TextStyle;
 import java.time.temporal.WeekFields;
-import java.util.Calendar;
 import java.util.Locale;
 
 import Views.DayViewContainer;
@@ -52,6 +48,11 @@ public class CalendarioActivity extends AppCompatActivity {
             public void bind(DayViewContainer dayViewContainer, CalendarDay calendarDay) {
                 TextView textView = dayViewContainer.getTextView();
                 textView.setText(String.valueOf(calendarDay.getDate().getDayOfMonth()));
+                if (calendarDay.getOwner() != DayOwner.THIS_MONTH) {
+                    textView.setTextColor(Color.GRAY);
+                }else{
+                    textView.setTextColor(Color.BLACK);
+                }
                 if((int)(Math.floor(Math.random()*2)) == 1){
                     int color = (int)Math.floor(Math.random()*3);
                     switch (color){

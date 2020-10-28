@@ -1,9 +1,6 @@
 package Dao;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-
-public class DataDB {
+public class DataRemoteDB {
     //Información de la BD
     public final static String host="remotemysql.com";
     public static String port="3306";
@@ -14,6 +11,5 @@ public class DataDB {
     //Información para la conexion
     public static String urlMySQL = "jdbc:mysql://" + host + ":" + port + "/"+nameBD;
     public static String driver = "com.mysql.jdbc.Driver";
-
 }
 

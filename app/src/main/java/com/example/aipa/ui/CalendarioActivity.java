@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -50,20 +51,26 @@ public class CalendarioActivity extends AppCompatActivity {
                 textView.setText(String.valueOf(calendarDay.getDate().getDayOfMonth()));
                 if (calendarDay.getOwner() != DayOwner.THIS_MONTH) {
                     textView.setTextColor(Color.GRAY);
-                }else{
-                    textView.setTextColor(Color.BLACK);
+                    return;
                 }
+                textView.setTextColor(Color.BLACK);
                 if((int)(Math.floor(Math.random()*2)) == 1){
                     int color = (int)Math.floor(Math.random()*3);
                     switch (color){
                         case 0:
-                            textView.setBackgroundColor(Color.GREEN);
+                            textView.setBackgroundColor(getResources().getColor(R.color.verde));
+                            textView.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    Toast.makeText(getApplicationContext(), "verde", Toast.LENGTH_SHORT).show();
+                                }
+                            });
                             break;
                         case 1:
-                            textView.setBackgroundColor(Color.YELLOW);
+                            textView.setBackgroundColor(getResources().getColor(R.color.amarillo));
                             break;
                         case 2:
-                            textView.setBackgroundColor(Color.RED);
+                            textView.setBackgroundColor(getResources().getColor(R.color.rojo));
                             break;
                     }
                 }
@@ -79,7 +86,6 @@ public class CalendarioActivity extends AppCompatActivity {
             @Override
             public void bind(MonthHeaderContainer viewContainer, CalendarMonth calendarMonth) {
                 TextView txtview = viewContainer.getTextView();
-                System.out.println(calendarMonth.getMonth());
                 Month m = Month.of(calendarMonth.getMonth());
                 String mes = m.getDisplayName(TextStyle.FULL, new Locale("es"));
                 txtview.setText(calendarMonth.getYear() + " - " + mes.substring(0, 1).toUpperCase() + mes.substring(1));

@@ -1,4 +1,5 @@
 <resources>
+    <string name="dbName">AipaDB</string>
     <string name="app_name">AIPA</string>
     <string name="welcome">¡Bienvenido a AIPA!</string>
     <string name="fichaDiaria">Ficha Diaria</string>

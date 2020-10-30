@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import Models.Ingrediente;
 
-public interface iGestionIngredientes {
+public interface iIngredientesGestion {
     public ArrayList<Ingrediente> getAll();
     
 }

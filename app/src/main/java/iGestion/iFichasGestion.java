@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 import Models.FichaDiaria;
 
-public interface iGestionFichas {
+public interface iFichasGestion {
     public boolean save();
     public FichaDiaria get(LocalDate date);
 }

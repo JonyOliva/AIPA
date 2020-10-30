@@ -3,19 +3,16 @@ package Gestion;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.example.aipa.R;
-
 import java.time.LocalDate;
 
-import Dao.DataDB;
-import Dao.SQLHelper;
+import Coneccion.DataDB;
 import Models.FichaDiaria;
-import iGestion.iGestionFichas;
+import iGestion.iFichasGestion;
 
-public class GestionFichas implements iGestionFichas {
-    SQLiteDatabase db;
+public class FichasGestion implements iFichasGestion {
+    private SQLiteDatabase db;
 
-    public GestionFichas() {
+    public FichasGestion() {
         db = DataDB.getSqldb().getWritableDatabase();
     }
 

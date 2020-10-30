@@ -3,9 +3,9 @@ package Gestion;
 import java.util.ArrayList;
 
 import Models.Ingrediente;
-import iGestion.iGestionIngredientes;
+import iGestion.iIngredientesGestion;
 
-public class GestionIngredientes implements iGestionIngredientes {
+public class IngredientesGestion implements iIngredientesGestion {
     @Override
     public ArrayList<Ingrediente> getAll() {
         return null;

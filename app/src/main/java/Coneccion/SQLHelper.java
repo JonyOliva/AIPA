@@ -1,4 +1,4 @@
-package Dao;
+package Coneccion;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -23,7 +23,13 @@ public class SQLHelper extends SQLiteOpenHelper {
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-
+    public void onUpgrade(SQLiteDatabase db, int i, int i1) {
+        /*db.execSQL("drop table if exists Sintomas");
+        db.execSQL("drop table if exists Fases");
+        db.execSQL("drop table if exists Users");
+        db.execSQL("drop table if exists Ingredientes");
+        db.execSQL("drop table if exists FichasDiarias");
+        db.execSQL("drop table if exists IngredientesXFicha");
+        onCreate(db);*/
     }
 }

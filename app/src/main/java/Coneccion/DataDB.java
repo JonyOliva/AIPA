@@ -1,13 +1,13 @@
-package Dao;
+package Coneccion;
 
 public class DataDB {
 
     public static SQLHelper sqldb;
     public final static String host="remotemysql.com";
     public final static String port="3306";
-    public final static String nameBD="";
-    public final static String user="";
-    public final static String pass="";
+    public final static String nameBD="LGTzezroDl";
+    public final static String user="LGTzezroDl";
+    public final static String pass="PHtjrDCurJ";
 
     public final static String urlMySQL = "jdbc:mysql://" + host + ":" + port + "/"+nameBD;
     public final static String driver = "com.mysql.jdbc.Driver";

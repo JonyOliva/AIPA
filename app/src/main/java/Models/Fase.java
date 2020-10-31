@@ -9,6 +9,10 @@ public class Fase {
         Descripcion = descripcion;
     }
 
+    public Fase() {
+
+    }
+
     public int getNroFase() {
         return NroFase;
     }

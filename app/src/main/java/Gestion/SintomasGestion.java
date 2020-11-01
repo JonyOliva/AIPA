@@ -3,7 +3,7 @@ package Gestion;
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
 
-import Coneccion.DataDB;
+import Conexion.DataDB;
 import Models.Sintoma;
 import iGestion.iSintomasGestion;
 

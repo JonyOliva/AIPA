@@ -1,4 +1,4 @@
-package Coneccion;
+package Conexion;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

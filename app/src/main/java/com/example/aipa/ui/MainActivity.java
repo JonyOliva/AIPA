@@ -7,8 +7,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.aipa.R;
 
-import Coneccion.DataDB;
-import Coneccion.SQLHelper;
+import Conexion.DataDB;
+import Conexion.SQLHelper;
 import Service.SyncDatabase;
 
 public class MainActivity extends AppCompatActivity {

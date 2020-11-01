@@ -1,4 +1,4 @@
-package Coneccion;
+package Conexion;
 
 public class DataDB {
 

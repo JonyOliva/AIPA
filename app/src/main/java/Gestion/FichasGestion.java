@@ -5,7 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import java.time.LocalDate;
 
-import Coneccion.DataDB;
+import Conexion.DataDB;
 import Models.FichaDiaria;
 import iGestion.iFichasGestion;
 

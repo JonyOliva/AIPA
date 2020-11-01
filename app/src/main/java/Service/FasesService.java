@@ -6,9 +6,8 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import Coneccion.DataDB;
+import Conexion.DataDB;
 import Models.Fase;
-import Models.Sintoma;
 import iService.iFasesService;
 
 public class FasesService implements iFasesService {

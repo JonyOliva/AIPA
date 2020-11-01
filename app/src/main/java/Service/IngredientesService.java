@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import Coneccion.DataDB;
+import Connection.DataDB;
 import Models.Fase;
 import Models.Ingrediente;
 import iService.iIngredientesService;

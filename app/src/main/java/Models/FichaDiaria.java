@@ -1,11 +1,10 @@
 package Models;
 
-import java.util.Date;
 import java.util.List;
 
 public class FichaDiaria {
     private int IdFicha;
-    private Date Fecha;
+    private String Fecha;
     private String Comentario;
     private int TiempoEjercicio;
     private Sintoma Sintoma;
@@ -22,7 +21,7 @@ public class FichaDiaria {
     public FichaDiaria() {
     }
 
-    public FichaDiaria(int idFicha, Date fecha, String comentario, int tiempoEjercicio, Models.Sintoma sintoma, List<Ingrediente>list) {
+    public FichaDiaria(int idFicha, String fecha, String comentario, int tiempoEjercicio, Models.Sintoma sintoma, List<Ingrediente>list) {
         IdFicha = idFicha;
         Fecha = fecha;
         Comentario = comentario;
@@ -39,11 +38,11 @@ public class FichaDiaria {
         IdFicha = idFicha;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return Fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         Fecha = fecha;
     }
 

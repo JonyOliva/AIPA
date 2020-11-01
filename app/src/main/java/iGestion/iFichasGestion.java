@@ -1,10 +1,8 @@
 package iGestion;
 
-import java.time.LocalDate;
-
 import Models.FichaDiaria;
 
 public interface iFichasGestion {
-    public boolean save();
-    public FichaDiaria get(LocalDate date);
+    public boolean save(FichaDiaria ficha);
+    public FichaDiaria get(String date);
 }

@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import Conexion.DataDB;
+import Connection.DataDB;
 import Models.Sintoma;
 import iService.iSintomasService;
 

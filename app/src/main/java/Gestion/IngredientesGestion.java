@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import java.util.ArrayList;
 
-import Coneccion.DataDB;
+import Connection.DataDB;
 import Models.Fase;
 import Models.Ingrediente;
 import iGestion.iIngredientesGestion;

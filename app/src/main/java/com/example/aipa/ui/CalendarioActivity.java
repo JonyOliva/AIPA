@@ -17,12 +17,15 @@ import com.kizitonwose.calendarview.ui.DayBinder;
 import com.kizitonwose.calendarview.ui.MonthHeaderFooterBinder;
 
 import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.time.Month;
 import java.time.YearMonth;
 import java.time.format.TextStyle;
 import java.time.temporal.WeekFields;
 import java.util.Locale;
 
+import Gestion.FichasGestion;
+import Models.FichaDiaria;
 import Views.DayViewContainer;
 import Views.MonthHeaderContainer;
 
@@ -40,6 +43,7 @@ public class CalendarioActivity extends AppCompatActivity {
         DayOfWeek firstDayOfWeek = WeekFields.of(Locale.getDefault()).getFirstDayOfWeek();
         calendarView.setup(firstMonth, lastMonth, firstDayOfWeek);
         calendarView.scrollToMonth(currentMonth);
+        FichasGestion fg = new FichasGestion();
         calendarView.setDayBinder(new DayBinder<DayViewContainer>(){
             @Override
             public DayViewContainer create(View view) {
@@ -54,25 +58,28 @@ public class CalendarioActivity extends AppCompatActivity {
                     return;
                 }
                 textView.setTextColor(Color.BLACK);
-                if((int)(Math.floor(Math.random()*2)) == 1){
-                    int color = (int)Math.floor(Math.random()*3);
-                    switch (color){
-                        case 0:
-                            textView.setBackgroundColor(getResources().getColor(R.color.verde));
-                            textView.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View view) {
-                                    Toast.makeText(getApplicationContext(), "verde", Toast.LENGTH_SHORT).show();
-                                }
-                            });
-                            break;
-                        case 1:
-                            textView.setBackgroundColor(getResources().getColor(R.color.amarillo));
-                            break;
-                        case 2:
-                            textView.setBackgroundColor(getResources().getColor(R.color.rojo));
-                            break;
+                FichaDiaria fd = fg.get(calendarDay.getDate().toString());
+                if(LocalDate.now().compareTo(calendarDay.getDate()) <= 0 || fd == null ) return;
+                textView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Toast.makeText(getApplicationContext(), "ficha diaria", Toast.LENGTH_SHORT).show();
                     }
+                });
+                int coloropc = fd.getSintoma().getModificadorPuntaje();
+                switch (coloropc){
+                    case 0:
+                        textView.setBackgroundColor(getResources().getColor(R.color.verde));
+                        break;
+                    case 1:
+                        textView.setBackgroundColor(getResources().getColor(R.color.amarillo));
+                        break;
+                    case 2:
+                        textView.setBackgroundColor(getResources().getColor(R.color.naranja));
+                        break;
+                    case 3:
+                        textView.setBackgroundColor(getResources().getColor(R.color.rojo));
+                        break;
                 }
             }
         });

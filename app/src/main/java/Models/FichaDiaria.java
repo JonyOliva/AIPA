@@ -1,6 +1,7 @@
 package Models;
 
 import java.util.Date;
+import java.util.List;
 
 public class FichaDiaria {
     private int IdFicha;
@@ -8,16 +9,26 @@ public class FichaDiaria {
     private String Comentario;
     private int TiempoEjercicio;
     private Sintoma Sintoma;
+    private List<Ingrediente> listaIngredientes;
+
+    public List<Ingrediente> getListaIngredientes() {
+        return listaIngredientes;
+    }
+
+    public void setListaIngredientes(List<Ingrediente> listaIngredientes) {
+        this.listaIngredientes = listaIngredientes;
+    }
 
     public FichaDiaria() {
     }
 
-    public FichaDiaria(int idFicha, Date fecha, String comentario, int tiempoEjercicio, Models.Sintoma sintoma) {
+    public FichaDiaria(int idFicha, Date fecha, String comentario, int tiempoEjercicio, Models.Sintoma sintoma, List<Ingrediente>list) {
         IdFicha = idFicha;
         Fecha = fecha;
         Comentario = comentario;
         TiempoEjercicio = tiempoEjercicio;
         Sintoma = sintoma;
+        listaIngredientes = list;
     }
 
     public int getIdFicha() {
@@ -58,5 +69,9 @@ public class FichaDiaria {
 
     public void setSintoma(Models.Sintoma sintoma) {
         Sintoma = sintoma;
+    }
+
+    private void addIngrediente(Ingrediente ing){
+        listaIngredientes.add(ing);
     }
 }

@@ -19,7 +19,7 @@ public class FasesGestion implements iFasesGestion {
         values.put("nrofase", fase.getNroFase());
         values.put("descripcion", fase.getDescripcion());
         long result;
-        result = db.insert("Fases",null, values); //si male sal insert() devuelve -1
+        result = db.insert("Fases",null, values);
         return (result != -1);
     }
 

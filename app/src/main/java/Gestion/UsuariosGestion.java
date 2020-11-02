@@ -23,6 +23,7 @@ public class UsuariosGestion implements iUsuariosGestion {
         ContentValues values = new ContentValues();
         values.put("email", usuario.getEmail());
         values.put("password", usuario.getPassword());
+        values.put("nombre", usuario.getNombre());
         values.put("apellido", usuario.getApellido());
         values.put("peso", usuario.getPeso());
         values.put("altura", usuario.getAltura());

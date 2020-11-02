@@ -23,7 +23,8 @@ public class MainActivity extends AppCompatActivity {
         SyncDatabase syncdb = new SyncDatabase();
         syncdb.execute();
 
-        Intent i = new Intent(this, CalendarioActivity.class);
+        
+        Intent i = new Intent(this, RegistrarUsuarioActivity.class);
         startActivity(i);
     }
 

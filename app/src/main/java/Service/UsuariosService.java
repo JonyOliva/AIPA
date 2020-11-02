@@ -24,12 +24,13 @@ public class UsuariosService implements iUsuariosService {
     }
 
     @Override
-    public Usuario getUser() {
+    public Usuario getUser(String mail) {
         if(con == null)
             return null;
         try{
             Statement st = con.createStatement();
-            String query = "SELECT * FROM Users";
+            String query = "SELECT * FROM Users where email=':mail'";
+            query = query.replace(":mail", mail);
             ResultSet rs = st.executeQuery(query);
             if (rs.next()) {
                 Usuario user = new Usuario();

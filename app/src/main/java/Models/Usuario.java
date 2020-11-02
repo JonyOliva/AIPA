@@ -3,7 +3,6 @@ package Models;
 public class Usuario {
     private String Email;
     private String Password;
-    private int IdUsuario;
     private String Nombre;
     private  String Apellido;
     private float Peso;
@@ -13,10 +12,9 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(String email, String password, int idUsuario, String nombre, String apellido, float peso, float altura, Fase fase) {
+    public Usuario(String email, String password, String nombre, String apellido, float peso, float altura, Fase fase) {
         Email = email;
         Password = password;
-        IdUsuario = idUsuario;
         Nombre = nombre;
         Apellido = apellido;
         Peso = peso;
@@ -32,13 +30,6 @@ public class Usuario {
         Password = password;
     }
 
-    public int getIdUsuario() {
-        return IdUsuario;
-    }
-
-    public void setIdUsuario(int idUsuario) {
-        IdUsuario = idUsuario;
-    }
 
     public String getNombre() {
         return Nombre;

@@ -1,6 +1,8 @@
 package Models;
 
 public class Usuario {
+    private String Email;
+    private String Password;
     private int IdUsuario;
     private String Nombre;
     private  String Apellido;
@@ -11,13 +13,23 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(int idUsuario, String nombre, String apellido, float peso, float altura, Fase fase) {
+    public Usuario(String email, String password, int idUsuario, String nombre, String apellido, float peso, float altura, Fase fase) {
+        Email = email;
+        Password = password;
         IdUsuario = idUsuario;
         Nombre = nombre;
         Apellido = apellido;
         Peso = peso;
         Altura = altura;
         this.fase = fase;
+    }
+
+    public String getPassword() {
+        return Password;
+    }
+
+    public void setPassword(String password) {
+        Password = password;
     }
 
     public int getIdUsuario() {
@@ -66,5 +78,13 @@ public class Usuario {
 
     public void setFase(Fase fase) {
         this.fase = fase;
+    }
+
+    public String getEmail() {
+        return Email;
+    }
+
+    public void setEmail(String email) {
+        Email = email;
     }
 }

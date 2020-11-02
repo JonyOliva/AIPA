@@ -24,8 +24,9 @@ public class FasesGestion implements iFasesGestion {
     }
 
     @Override
-    protected void finalize() throws Throwable {
-        db.close();
-        super.finalize();
+    public Boolean deleteAll() {
+        int res = db.delete("Fases", null, null);
+        return res > 0;
     }
+
 }

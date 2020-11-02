@@ -30,6 +30,7 @@ public class SyncDatabase extends AsyncTask<Void, Integer, Boolean> {
         Boolean result = true;
         iSintomasService ss = new SintomasService();
         iSintomasGestion gs = new SintomasGestion();
+        gs.deleteAll();
         ArrayList<Sintoma> sintomas = ss.getAll();
         for(Sintoma sin:sintomas){
             result = gs.save(sin);
@@ -41,6 +42,7 @@ public class SyncDatabase extends AsyncTask<Void, Integer, Boolean> {
         Boolean result = true;
         iFasesService fs = new FasesService();
         iFasesGestion fg = new FasesGestion();
+        fg.deleteAll();
         ArrayList<Fase> fases = fs.getAll();
         for(Fase fase:fases){
             result = fg.save(fase);
@@ -52,6 +54,7 @@ public class SyncDatabase extends AsyncTask<Void, Integer, Boolean> {
         Boolean result = true;
         iIngredientesService is = new IngredientesService();
         iIngredientesGestion ig = new IngredientesGestion();
+        ig.deleteAll();
         ArrayList<Ingrediente> ingredientes = is.getAll();
         for(Ingrediente ing:ingredientes){
             result = ig.save(ing);

@@ -26,8 +26,9 @@ public class SintomasGestion implements iSintomasGestion {
     }
 
     @Override
-    protected void finalize() throws Throwable {
-        db.close();
-        super.finalize();
+    public Boolean deleteAll() {
+        int res = db.delete("Sintomas", null, null);
+        return res > 0;
     }
+
 }

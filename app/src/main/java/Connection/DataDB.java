@@ -19,5 +19,13 @@ public class DataDB {
         if(_db != null)
         sqldb = _db;
     }
+
+    @Override
+    protected void finalize() throws Throwable {
+        if(sqldb != null){
+            sqldb.close();
+        }
+        super.finalize();
+    }
 }
 

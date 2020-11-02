@@ -50,8 +50,9 @@ public class IngredientesGestion implements iIngredientesGestion {
     }
 
     @Override
-    protected void finalize() throws Throwable {
-        db.close();
-        super.finalize();
+    public Boolean deleteAll() {
+        int res = db.delete("Ingredientes", null, null);
+        return res > 0;
     }
+
 }

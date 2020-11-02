@@ -29,6 +29,7 @@ public class FichasGestion implements iFichasGestion {
     }
 
     public FichaDiaria get(String date){ //ejem: 2020-30-10
+        System.out.println("************ Llamando a get ficha ************");
         String query = "select idficha, fecha, comentario, tiempoejercicio, idsintoma from FichasDiarias where fecha=':date'";
         query = query.replace(":date", date);
         Cursor cursor = db.rawQuery(query, null);
@@ -44,5 +45,11 @@ public class FichasGestion implements iFichasGestion {
         }
         cursor.close();
         return f;
+    }
+
+    @Override
+    public Boolean deleteAll() {
+        int res = db.delete("FichasDiarias", null, null);
+        return res > 0;
     }
 }

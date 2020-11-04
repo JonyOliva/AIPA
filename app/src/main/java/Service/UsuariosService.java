@@ -1,27 +1,13 @@
 package Service;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-import Connection.DataDB;
 import Models.Fase;
 import Models.Usuario;
 import iService.iUsuariosService;
 
-public class UsuariosService implements iUsuariosService {
-
-    private Connection con;
-
-    public UsuariosService() {
-        try{
-            Class.forName(DataDB.driver);
-            con = DriverManager.getConnection(DataDB.urlMySQL, DataDB.user, DataDB.pass);
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-    }
+public class UsuariosService extends BaseService implements iUsuariosService {
 
     @Override
     public Usuario getUser(String mail, String pass) {

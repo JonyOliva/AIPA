@@ -1,28 +1,13 @@
 package Service;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import Connection.DataDB;
 import Models.Fase;
 import iService.iFasesService;
 
-public class FasesService implements iFasesService {
-
-    private Connection con;
-
-    public FasesService() {
-        try{
-            Class.forName(DataDB.driver);
-            con = DriverManager.getConnection(DataDB.urlMySQL, DataDB.user, DataDB.pass);
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-    }
-
+public class FasesService extends BaseService implements iFasesService{
     @Override
     public ArrayList<Fase> getAll() {
         if(con == null)

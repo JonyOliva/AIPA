@@ -1,37 +1,22 @@
 package Service;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import Connection.DataDB;
 import Models.Fase;
 import Models.Ingrediente;
 import iService.iIngredientesService;
 
-public class IngredientesService implements iIngredientesService {
-
-    private Connection con;
-
-    public IngredientesService() {
-        try{
-            Class.forName(DataDB.driver);
-            con = DriverManager.getConnection(DataDB.urlMySQL, DataDB.user, DataDB.pass);
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-    }
-
+public class IngredientesService extends BaseService implements iIngredientesService {
     @Override
-    public ArrayList<Ingrediente> getAll() {
+    public ArrayList<Ingrediente> getAllDefault() {
         if(con == null)
             return null;
         try{
             ArrayList<Ingrediente> ingredientes = new ArrayList<Ingrediente>();
             Statement st = con.createStatement();
-            String query = "Select idingrediente, nombre, puntaje, fase, descripcion from Ingredientes inner join Fases on (nrofase=fase)";
+            String query = "Select idingrediente, nombre, puntaje, fase, descripcion from Ingredientes inner join Fases on (nrofase=fase) where usuario='default'";
             ResultSet rs = st.executeQuery(query);
             while(rs.next()) {
                 Ingrediente ing  = new Ingrediente();

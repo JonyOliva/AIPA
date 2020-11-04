@@ -17,7 +17,7 @@ public class FichasGestion implements iFichasGestion {
     }
 
     @Override
-    public boolean save(FichaDiaria ficha) { //no terminado
+    public boolean save(FichaDiaria ficha) {
         ContentValues values = new ContentValues();
         values.put("fecha", ficha.getFecha());
         values.put("comentario", ficha.getComentario());

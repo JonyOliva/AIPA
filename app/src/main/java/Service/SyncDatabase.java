@@ -55,7 +55,7 @@ public class SyncDatabase extends AsyncTask<Void, Integer, Boolean> {
         iIngredientesService is = new IngredientesService();
         iIngredientesGestion ig = new IngredientesGestion();
         ig.deleteAll();
-        ArrayList<Ingrediente> ingredientes = is.getAll();
+        ArrayList<Ingrediente> ingredientes = is.getAllDefault();
         for(Ingrediente ing:ingredientes){
             result = ig.save(ing);
         }

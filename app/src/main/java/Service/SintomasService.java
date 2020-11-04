@@ -1,28 +1,13 @@
 package Service;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import Connection.DataDB;
 import Models.Sintoma;
 import iService.iSintomasService;
 
-public class SintomasService implements iSintomasService {
-
-    private Connection con;
-
-    public SintomasService() {
-        try{
-            Class.forName(DataDB.driver);
-            con = DriverManager.getConnection(DataDB.urlMySQL, DataDB.user, DataDB.pass);
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-    }
-
+public class SintomasService extends BaseService implements iSintomasService {
     @Override
     public ArrayList<Sintoma> getAll() {
         if(con == null)

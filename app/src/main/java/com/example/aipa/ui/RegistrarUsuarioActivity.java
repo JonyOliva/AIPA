@@ -10,9 +10,12 @@ import android.widget.Toast;
 
 import com.example.aipa.R;
 
+import Connection.DataDB;
+import Connection.SQLHelper;
 import Gestion.UsuariosGestion;
 import Models.Fase;
 import Models.Usuario;
+import Service.SyncDatabase;
 import Service.UsuariosService;
 
 public class RegistrarUsuarioActivity extends AppCompatActivity {
@@ -38,6 +41,11 @@ public class RegistrarUsuarioActivity extends AppCompatActivity {
         Altura = (EditText)findViewById(R.id.txtAltura);
     }
 
+    public void RedirUsuarioRegistrado(View view){
+        Intent i = new Intent(this, UsuarioRegistrado.class);
+        startActivity(i);
+    }
+
     public void registrarUsuario(View view){
         UsuariosGestion ug = new UsuariosGestion();
         UsuariosService us = new UsuariosService();
@@ -59,6 +67,11 @@ public class RegistrarUsuarioActivity extends AppCompatActivity {
             user.setAltura(Float.parseFloat(Altura.getText().toString()));
             ug.save(user);
             Toast.makeText(this, "Usuario registrado correctamente", Toast.LENGTH_SHORT).show();
+
+
+            SyncDatabase syncdb = new SyncDatabase();
+            syncdb.execute();
+
             Intent i = new Intent(this, MenuPrincipal.class);
             startActivity(i);
         }
@@ -78,7 +91,9 @@ public class RegistrarUsuarioActivity extends AppCompatActivity {
             return true;
         }
     }
-    boolean isEmailValid(CharSequence email) {
+    public boolean isEmailValid(CharSequence email) {
         return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
+
+
 }

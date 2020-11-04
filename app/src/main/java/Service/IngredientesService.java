@@ -47,4 +47,30 @@ public class IngredientesService implements iIngredientesService {
             return null;
         }
     }
+
+    @Override
+    public ArrayList<Ingrediente> getAllForUser(String email) {
+        if(con == null)
+        return null;
+        try{
+            ArrayList<Ingrediente> ingredientes = new ArrayList<Ingrediente>();
+            Statement st = con.createStatement();
+            String query = "Select idingrediente, nombre, puntaje, fase, descripcion from Ingredientes inner join Fases on (nrofase=fase)" +
+                    "where email =':email'";
+            query = query.replace(":email", email);
+            ResultSet rs = st.executeQuery(query);
+            while(rs.next()) {
+                Ingrediente ing  = new Ingrediente();
+                ing.setIdIngrediente(rs.getInt("idingrediente"));
+                ing.setNombre(rs.getString("nombre"));
+                ing.setPuntaje(rs.getInt("puntaje"));
+                ing.setFase(new Fase(rs.getInt("fase"), rs.getString("descripcion")));
+                ingredientes.add(ing);
+            }
+            return ingredientes;
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+    }
 }

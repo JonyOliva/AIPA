@@ -6,4 +6,5 @@ import Models.Ingrediente;
 
 public interface iIngredientesService {
     public ArrayList<Ingrediente> getAll();
+    public ArrayList<Ingrediente> getAllForUser(String email);
 }

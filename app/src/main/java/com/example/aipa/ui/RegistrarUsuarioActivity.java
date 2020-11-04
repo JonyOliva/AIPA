@@ -50,7 +50,7 @@ public class RegistrarUsuarioActivity extends AppCompatActivity {
         UsuariosGestion ug = new UsuariosGestion();
         UsuariosService us = new UsuariosService();
 
-        if(us.getUser(Email.getText().toString()) != null){
+        if(us.getUser(Email.getText().toString(), "") != null){
             Toast.makeText(this, "Ese email ya está registrado.", Toast.LENGTH_SHORT).show();
             return;
         }

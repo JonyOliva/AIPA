@@ -23,10 +23,8 @@ public class MainActivity extends AppCompatActivity {
 
         SQLHelper sql = new SQLHelper(this, getString(R.string.dbName), null, 1);
         DataDB.setSqldb(sql);
-        FichasService asd = new FichasService();
-        asd.getAllFromUser("admin");
-        //SyncDatabase syncdb = new SyncDatabase();
-        //syncdb.execute();
+        SyncDatabase syncdb = new SyncDatabase();
+        syncdb.execute();
 
         UsuariosGestion ug = new UsuariosGestion();
         if(ug.read() == null){

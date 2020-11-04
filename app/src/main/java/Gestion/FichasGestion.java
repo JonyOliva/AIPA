@@ -2,19 +2,12 @@ package Gestion;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 
-import Connection.DataDB;
 import Models.FichaDiaria;
 import Models.Sintoma;
 import iGestion.iFichasGestion;
 
-public class FichasGestion implements iFichasGestion {
-    private SQLiteDatabase db;
-
-    public FichasGestion() {
-        db = DataDB.getSqldb().getWritableDatabase();
-    }
+public class FichasGestion extends BaseGestion implements iFichasGestion {
 
     @Override
     public boolean save(FichaDiaria ficha) {
@@ -29,7 +22,6 @@ public class FichasGestion implements iFichasGestion {
     }
 
     public FichaDiaria get(String date){ //ejem: 2020-30-10
-        System.out.println("************ Llamando a get ficha ************");
         String query = "select idficha, fecha, comentario, tiempoejercicio, idsintoma from FichasDiarias where fecha=':date'";
         query = query.replace(":date", date);
         Cursor cursor = db.rawQuery(query, null);

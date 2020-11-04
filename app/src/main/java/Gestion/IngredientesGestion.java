@@ -2,20 +2,14 @@ package Gestion;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 
 import java.util.ArrayList;
 
-import Connection.DataDB;
 import Models.Fase;
 import Models.Ingrediente;
 import iGestion.iIngredientesGestion;
 
-public class IngredientesGestion implements iIngredientesGestion {
-    private SQLiteDatabase db;
-    public IngredientesGestion() {
-        this.db = DataDB.getSqldb().getWritableDatabase();
-    }
+public class IngredientesGestion extends BaseGestion implements iIngredientesGestion {
     @Override
     public ArrayList<Ingrediente> getAll() {
         ArrayList<Ingrediente> ingredientes = new ArrayList<Ingrediente>();

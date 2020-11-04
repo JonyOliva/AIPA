@@ -2,21 +2,12 @@ package Gestion;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 
-import Connection.DataDB;
 import Models.Fase;
-import Models.FichaDiaria;
-import Models.Sintoma;
 import Models.Usuario;
 import iGestion.iUsuariosGestion;
 
-public class UsuariosGestion implements iUsuariosGestion {
-    private SQLiteDatabase db;
-
-    public UsuariosGestion() {
-        db = DataDB.getSqldb().getWritableDatabase();
-    }
+public class UsuariosGestion extends BaseGestion implements iUsuariosGestion {
 
     @Override
     public Boolean save(Usuario usuario) {
@@ -35,7 +26,6 @@ public class UsuariosGestion implements iUsuariosGestion {
 
     @Override
     public Usuario read() {
-        System.out.println("************ Llamando a read User ************");
         String query = "select * from Users LIMIT 1;";
         Cursor cursor = db.rawQuery(query, null);
         if(cursor.getCount() <= 0)

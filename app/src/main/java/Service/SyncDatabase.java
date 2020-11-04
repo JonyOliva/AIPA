@@ -22,7 +22,6 @@ public class SyncDatabase extends AsyncTask<Void, Integer, Boolean> {
     protected Boolean doInBackground(Void... voids) {
         SyncSintomas();
         SyncFases();
-        SyncIngredientes();
         return null;
     }
 
@@ -50,15 +49,4 @@ public class SyncDatabase extends AsyncTask<Void, Integer, Boolean> {
         return result;
     }
 
-    private Boolean SyncIngredientes(){
-        Boolean result = true;
-        iIngredientesService is = new IngredientesService();
-        iIngredientesGestion ig = new IngredientesGestion();
-        ig.deleteAll();
-        ArrayList<Ingrediente> ingredientes = is.getAllDefault();
-        for(Ingrediente ing:ingredientes){
-            result = ig.save(ing);
-        }
-        return result;
-    }
 }

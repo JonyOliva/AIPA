@@ -1,18 +1,11 @@
 package Gestion;
 
 import android.content.ContentValues;
-import android.database.sqlite.SQLiteDatabase;
 
-import Connection.DataDB;
 import Models.Sintoma;
 import iGestion.iSintomasGestion;
 
-public class SintomasGestion implements iSintomasGestion {
-    private SQLiteDatabase db;
-
-    public SintomasGestion() {
-        this.db = DataDB.getSqldb().getWritableDatabase();
-    }
+public class SintomasGestion extends BaseGestion implements iSintomasGestion {
 
     @Override
     public Boolean save(Sintoma sintoma) {

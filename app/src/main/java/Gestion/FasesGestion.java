@@ -1,17 +1,11 @@
 package Gestion;
 
 import android.content.ContentValues;
-import android.database.sqlite.SQLiteDatabase;
 
-import Connection.DataDB;
 import Models.Fase;
 import iGestion.iFasesGestion;
 
-public class FasesGestion implements iFasesGestion {
-    private SQLiteDatabase db;
-    public FasesGestion() {
-        this.db = DataDB.getSqldb().getWritableDatabase();
-    }
+public class FasesGestion extends BaseGestion implements iFasesGestion {
 
     @Override
     public Boolean save(Fase fase) {

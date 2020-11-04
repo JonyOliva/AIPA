@@ -34,7 +34,6 @@ public class UsuarioRegistrado extends AppCompatActivity {
     }
 
     public void validarUsuario(View view){
-            UsuariosGestion ug = new UsuariosGestion();
             SyncDatabase syncdb = new SyncDatabase();
             syncdb.execute();
             SyncBackUp sb = new SyncBackUp(Email.getText().toString(), Pass.getText().toString(),

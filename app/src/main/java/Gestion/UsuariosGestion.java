@@ -25,6 +25,19 @@ public class UsuariosGestion extends BaseGestion implements iUsuariosGestion {
     }
 
     @Override
+    public Boolean update(Usuario usuario) {
+        ContentValues values = new ContentValues();
+        values.put("nombre", usuario.getNombre());
+        values.put("apellido", usuario.getApellido());
+        values.put("peso", usuario.getPeso());
+        values.put("altura", usuario.getAltura());
+        values.put("nrofase", usuario.getFase().getNroFase());
+        long result;
+        result = db.update("Users", values,"", new String[0]);
+        return (result != -1);
+    }
+
+    @Override
     public Usuario read() {
         String query = "select * from Users LIMIT 1;";
         Cursor cursor = db.rawQuery(query, null);
@@ -33,6 +46,7 @@ public class UsuariosGestion extends BaseGestion implements iUsuariosGestion {
         Usuario u = new Usuario();
         if(cursor.moveToFirst()){
             u.setEmail(cursor.getString(0));
+            u.setPassword(cursor.getString(1));
             u.setNombre(cursor.getString(2));
             u.setApellido(cursor.getString(3));
             u.setPeso(cursor.getFloat(4));

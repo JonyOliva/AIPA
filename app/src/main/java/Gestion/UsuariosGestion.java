@@ -52,4 +52,10 @@ public class UsuariosGestion implements iUsuariosGestion {
         cursor.close();
         return u;
     }
+
+    @Override
+    public Boolean delete() {
+        int res = db.delete("Users", null, null);
+        return res > 0;
+    }
 }

@@ -56,7 +56,7 @@ public class IngredientesService implements iIngredientesService {
             ArrayList<Ingrediente> ingredientes = new ArrayList<Ingrediente>();
             Statement st = con.createStatement();
             String query = "Select idingrediente, nombre, puntaje, fase, descripcion from Ingredientes inner join Fases on (nrofase=fase)" +
-                    "where email =':email'";
+                    "where usuario =':email'";
             query = query.replace(":email", email);
             ResultSet rs = st.executeQuery(query);
             while(rs.next()) {

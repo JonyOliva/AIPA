@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.ArrayList;
 
 import Connection.DataDB;
 import Models.Fase;
@@ -12,6 +11,7 @@ import Models.Usuario;
 import iService.iUsuariosService;
 
 public class UsuariosService implements iUsuariosService {
+
     private Connection con;
 
     public UsuariosService() {

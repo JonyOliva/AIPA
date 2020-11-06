@@ -5,4 +5,7 @@
     <string name="fichaDiaria">Ficha Diaria</string>
     <string name="calendario">Calendario</string>
     <string name="config">Configuración</string>
+    <string name="delete">Se eliminarán de manera permanente todos los registro de la aplicación</string>
+    <string name="delete_positive">Continuar</string>
+    <string name="delete_negative">Cancelar</string>
 </resources>

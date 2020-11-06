@@ -5,16 +5,12 @@ import android.os.AsyncTask;
 import java.util.ArrayList;
 
 import Gestion.FasesGestion;
-import Gestion.IngredientesGestion;
 import Gestion.SintomasGestion;
 import Models.Fase;
-import Models.Ingrediente;
 import Models.Sintoma;
 import iGestion.iFasesGestion;
-import iGestion.iIngredientesGestion;
 import iGestion.iSintomasGestion;
 import iService.iFasesService;
-import iService.iIngredientesService;
 import iService.iSintomasService;
 
 public class SyncDatabase extends AsyncTask<Void, Integer, Boolean> {
@@ -22,7 +18,6 @@ public class SyncDatabase extends AsyncTask<Void, Integer, Boolean> {
     protected Boolean doInBackground(Void... voids) {
         SyncSintomas();
         SyncFases();
-        SyncIngredientes();
         return null;
     }
 
@@ -46,18 +41,6 @@ public class SyncDatabase extends AsyncTask<Void, Integer, Boolean> {
         ArrayList<Fase> fases = fs.getAll();
         for(Fase fase:fases){
             result = fg.save(fase);
-        }
-        return result;
-    }
-
-    private Boolean SyncIngredientes(){
-        Boolean result = true;
-        iIngredientesService is = new IngredientesService();
-        iIngredientesGestion ig = new IngredientesGestion();
-        ig.deleteAll();
-        ArrayList<Ingrediente> ingredientes = is.getAllDefault();
-        for(Ingrediente ing:ingredientes){
-            result = ig.save(ing);
         }
         return result;
     }

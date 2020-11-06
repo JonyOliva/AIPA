@@ -2,8 +2,8 @@ package Service;
 
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.time.LocalDate;
 import java.util.ArrayList;
+
 import Models.FichaDiaria;
 import Models.Sintoma;
 import iService.iFichasService;

@@ -9,13 +9,18 @@ import Models.Ingrediente;
 import iGestion.iIngredientesGestion;
 import iService.iIngredientesService;
 
-public class IngredientesSync extends AsyncTask<Void, Integer, Boolean> {
+public class IngredientesSync extends AsyncTask<String, Integer, Boolean> {
     @Override
-    protected Boolean doInBackground(Void... voids) {
+    protected Boolean doInBackground(String... email) {
         Boolean result = true;
         iIngredientesService is = new IngredientesService();
         iIngredientesGestion ig = new IngredientesGestion();
-        ArrayList<Ingrediente> ingredientes = is.getAllDefault();
+        ArrayList<Ingrediente> ingredientes;
+        if(email.length == 0){
+            ingredientes = is.getAllDefault();
+        }else{
+            ingredientes = is.getAllForUser(email[0]);
+        }
         for(Ingrediente ing:ingredientes){
             result = ig.save(ing);
         }

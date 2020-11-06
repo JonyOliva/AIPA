@@ -17,4 +17,11 @@ public class BaseService {
             e.printStackTrace();
         }
     }
+
+    @Override
+    protected void finalize() throws Throwable {
+        if(con != null)
+            con.close();
+        super.finalize();
+    }
 }

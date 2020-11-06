@@ -51,21 +51,40 @@ public class UsuariosService extends BaseService implements iUsuariosService {
             Statement st = con.createStatement();
             String query = "INSERT INTO Users (`email`, `password`, `nombre`, `apellido`," +
                     " `peso`, `altura`, `nrofase`) VALUES (";
-            //String ins = "':email',':pass',':nom',':ap',':peso',':alt',':fase')";
-            String ins = "'"+user.getEmail()+"','"+user.getPassword()+"','"+user.getNombre()+
-                    "','"+user.getApellido()+"',"+Float.toString(user.getPeso())+","+
-                    Float.toString(user.getAltura())+","+
-                    Integer.toString(user.getFase().getNroFase()) +");";
+            String ins = "':email',':pass',':nom',':ap',:peso,:alt,:fase)";
             query += ins;
-            /*query = query.replace(":email", user.getEmail());
+            query = query.replace(":email", user.getEmail());
             query = query.replace(":pass", user.getPassword());
             query = query.replace(":nom", user.getNombre());
             query = query.replace(":ap", user.getApellido());
             query = query.replace(":peso", Float.toString(user.getPeso()));
             query = query.replace(":alt", Float.toString(user.getAltura()));
-            query = query.replace(":fase", Integer.toString(user.getFase().getNroFase()));*/
+            query = query.replace(":fase", Integer.toString(user.getFase().getNroFase()));
+            Boolean res =(st.executeUpdate(query) != -1);
+            return res;
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+    }
 
-            return (st.executeUpdate(query) != -1);
+    @Override
+    public boolean updateUser(Usuario user) {
+        if(con == null)
+            return false;
+        try{
+            Statement st = con.createStatement();
+            String query = "UPDATE Users SET Nombre = ':nom', Apellido = ':ap'," +
+                    "Peso = :peso , Altura = :alt , nrofase = :fase " +
+                    "WHERE email = ':email'";
+            query = query.replace(":email", user.getEmail());
+            query = query.replace(":nom", user.getNombre());
+            query = query.replace(":ap", user.getApellido());
+            query = query.replace(":peso", Float.toString(user.getPeso()));
+            query = query.replace(":alt", Float.toString(user.getAltura()));
+            query = query.replace(":fase", Integer.toString(user.getFase().getNroFase()));
+            Boolean res =(st.executeUpdate(query) != -1);
+            return res;
         }catch (Exception e){
             e.printStackTrace();
             return false;

@@ -58,4 +58,43 @@ public class IngredientesService extends BaseService implements iIngredientesSer
             return null;
         }
     }
+
+    @Override
+    public Boolean save(Ingrediente ing, String email) {
+        if(con == null)
+            return false;
+        try{
+            Statement st = con.createStatement();
+            String query = "INSERT INTO `Ingredientes` (`nombre`, `puntaje`," +
+                    " `fase`, `usuario`) VALUES (";
+            String ins = "':nombre',:punt,:fase,':user')";
+            query += ins;
+            query = query.replace(":user", email);
+            query = query.replace(":nombre", ing.getNombre());
+            query = query.replace(":punt", Integer.toString(ing.getPuntaje()));
+            query = query.replace(":fase", Integer.toString(ing.getFase().getNroFase()));
+
+            return (st.executeUpdate(query) != -1);
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    @Override
+    public Boolean deleteAll(String email) {
+        if(con == null)
+            return false;
+        try{
+            Statement st = con.createStatement();
+            String query = "DELETE FROM Ingredientes WHERE usuario =':mail';";
+            query = query.replace(":mail", email);
+            return (st.executeUpdate(query) != -1);
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+
 }

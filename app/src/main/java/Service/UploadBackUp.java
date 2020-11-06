@@ -34,11 +34,9 @@ public class UploadBackUp extends AsyncTask<Void, Integer, Boolean> {
     protected Boolean doInBackground(Void... voids) {
         if(upUser()) {
             //Toast.makeText(context, "BackUp realizado correctamente.", Toast.LENGTH_SHORT).show();
-            return true;
-        }else
-        {
-           return false;
         }
+        upIngredientes();
+        return null;
     }
 
     private Boolean upFichas(){
@@ -55,17 +53,20 @@ public class UploadBackUp extends AsyncTask<Void, Integer, Boolean> {
 
     private Boolean upUser(){
         iUsuariosService us = new UsuariosService();
-        return (us.insertUser(user));
+        if(!us.insertUser(user)){
+            us.updateUser(user);
+        }
+        return true;
     }
 
-    private Boolean upIngredientes(String e){
+    private Boolean upIngredientes(){
         Boolean result = true;
         iIngredientesService is = new IngredientesService();
         iIngredientesGestion ig = new IngredientesGestion();
-        ig.deleteAll();
-        ArrayList<Ingrediente> ingredientes = is.getAllForUser(e);
+        is.deleteAll(user.getEmail());
+        ArrayList<Ingrediente> ingredientes = ig.getAll();
         for(Ingrediente ing:ingredientes){
-            result = ig.save(ing);
+            result = is.save(ing, user.getEmail());
         }
         return result;
     }

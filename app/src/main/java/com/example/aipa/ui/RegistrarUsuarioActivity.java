@@ -19,6 +19,7 @@ import Models.Usuario;
 import Service.CheckUser;
 import Service.SyncDatabase;
 import Service.UsuariosService;
+import iService.iUsuariosService;
 
 public class RegistrarUsuarioActivity extends AppCompatActivity {
 
@@ -50,8 +51,22 @@ public class RegistrarUsuarioActivity extends AppCompatActivity {
 
     public void registrarUsuario(View view){
         UsuariosGestion ug = new UsuariosGestion();
-        CheckUser checkUser = new CheckUser(Email.getText().toString(), this);
-        checkUser.run();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                iUsuariosService us = new UsuariosService();
+                if(us.getUser(Email.getText().toString(), "") != null) {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(getApplicationContext(), "Ese email ya está registrado.", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+                }
+            }
+        }).start();
+
         if(Validar()){
             Usuario user = new Usuario();
 

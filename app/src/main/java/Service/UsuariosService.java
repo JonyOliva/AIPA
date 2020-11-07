@@ -1,11 +1,7 @@
 package Service;
 
-import android.content.Context;
-import android.widget.Toast;
-
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.concurrent.Callable;
 
 import Models.Fase;
 import Models.Usuario;

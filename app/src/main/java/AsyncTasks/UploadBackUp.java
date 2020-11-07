@@ -2,18 +2,17 @@ package AsyncTasks;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import Gestion.FichasGestion;
 import Gestion.IngredientesGestion;
 import Gestion.IngredientesXFichaGestion;
-import Gestion.SintomasGestion;
 import Gestion.UsuariosGestion;
 import Models.FichaDiaria;
 import Models.Ingrediente;
 import Models.IngredientesXFicha;
-import Models.Sintoma;
 import Models.Usuario;
 import Service.FichasService;
 import Service.IngredientesService;
@@ -22,27 +21,31 @@ import Service.UsuariosService;
 import iGestion.iFichasGestion;
 import iGestion.iIngredientesGestion;
 import iGestion.iIngredientesXFichaGestion;
-import iGestion.iSintomasGestion;
 import iGestion.iUsuariosGestion;
 import iService.iFichasService;
 import iService.iIngredientesService;
 import iService.iIngredientesXFicha;
-import iService.iSintomasService;
 import iService.iUsuariosService;
 
 public class UploadBackUp extends AsyncTask<Void, Integer, Boolean> {
 
     private Usuario user;
+    Context context;
+
+    public UploadBackUp(Context _context) {
+        context = _context;
+    }
 
     @Override
     protected Boolean doInBackground(Void... voids) {
+        Boolean res = true;
         iUsuariosGestion ug = new UsuariosGestion();
         user = ug.read();
-        upUser();
-        upIngredientes();
-        upFichas();
-        upIngredientesxFicha();
-        return null;
+        res = res && upUser();
+        res = res && upIngredientes();
+        res = res && upFichas();
+        res = res && upIngredientesxFicha();
+        return res;
     }
 
     private Boolean upFichas(){
@@ -53,7 +56,7 @@ public class UploadBackUp extends AsyncTask<Void, Integer, Boolean> {
         ArrayList<FichaDiaria> fichas = fg.getAll();
         if(fichas != null){
             for(FichaDiaria ficha:fichas){
-                result = fs.save(ficha, user.getEmail());
+                result = result && fs.save(ficha, user.getEmail()) ;
             }
         }
         return result;
@@ -75,7 +78,7 @@ public class UploadBackUp extends AsyncTask<Void, Integer, Boolean> {
         ArrayList<Ingrediente> ingredientes = ig.getAll();
         if(ingredientes != null){
             for(Ingrediente ing:ingredientes){
-                result = is.save(ing, user.getEmail());
+                result = result && is.save(ing, user.getEmail());
             }
         }
         return result;
@@ -89,9 +92,15 @@ public class UploadBackUp extends AsyncTask<Void, Integer, Boolean> {
         ArrayList<IngredientesXFicha> ixf = ixfg.getAll();
         if(ixf != null){
             for(IngredientesXFicha i:ixf){
-                result = ixfs.save(i, user.getEmail());
+                result = result && ixfs.save(i, user.getEmail());
             }
         }
         return result;
+    }
+
+    @Override
+    protected void onPostExecute(Boolean aBoolean) {
+        String msg = aBoolean ? "Backup creado correctamente" : "Error al intentar crear el backup";
+        Toast.makeText(context, msg, Toast.LENGTH_SHORT);
     }
 }

@@ -10,22 +10,18 @@ import java.util.ArrayList;
 
 import Gestion.FichasGestion;
 import Gestion.IngredientesGestion;
-import Gestion.SintomasGestion;
 import Gestion.UsuariosGestion;
 import Models.FichaDiaria;
 import Models.Ingrediente;
-import Models.Sintoma;
 import Models.Usuario;
 import Service.FichasService;
 import Service.IngredientesService;
 import Service.UsuariosService;
 import iGestion.iFichasGestion;
 import iGestion.iIngredientesGestion;
-import iGestion.iSintomasGestion;
 import iGestion.iUsuariosGestion;
 import iService.iFichasService;
 import iService.iIngredientesService;
-import iService.iSintomasService;
 import iService.iUsuariosService;
 
 

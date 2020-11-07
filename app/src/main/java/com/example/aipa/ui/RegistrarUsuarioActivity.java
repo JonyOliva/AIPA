@@ -1,19 +1,19 @@
 package com.example.aipa.ui;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.aipa.R;
 
+import AsyncTasks.SyncDatabase;
 import Gestion.UsuariosGestion;
 import Models.Fase;
 import Models.Usuario;
-import AsyncTasks.SyncDatabase;
 import Service.UsuariosService;
 import iService.iUsuariosService;
 

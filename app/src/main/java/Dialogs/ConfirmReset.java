@@ -9,13 +9,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
+import com.example.aipa.R;
+
+import AsyncTasks.IngredientesSync;
 import Gestion.FichasGestion;
 import Gestion.IngredientesGestion;
-import AsyncTasks.IngredientesSync;
 import iGestion.iFichasGestion;
 import iGestion.iIngredientesGestion;
-
-import com.example.aipa.R;
 
 public class ConfirmReset extends DialogFragment {
     @NonNull

@@ -5,9 +5,7 @@ import android.database.Cursor;
 
 import java.util.ArrayList;
 
-import Models.Fase;
 import Models.FichaDiaria;
-import Models.Ingrediente;
 import Models.Sintoma;
 import iGestion.iFichasGestion;
 

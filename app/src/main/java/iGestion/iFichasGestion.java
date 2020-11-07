@@ -3,7 +3,6 @@ package iGestion;
 import java.util.ArrayList;
 
 import Models.FichaDiaria;
-import Models.Ingrediente;
 
 public interface iFichasGestion {
     public boolean save(FichaDiaria ficha);

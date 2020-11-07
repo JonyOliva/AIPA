@@ -2,7 +2,6 @@ package iGestion;
 
 import java.util.ArrayList;
 
-import Models.FichaDiaria;
 import Models.IngredientesXFicha;
 
 public interface iIngredientesXFichaGestion {

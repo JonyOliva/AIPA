@@ -2,7 +2,6 @@ package iService;
 
 import java.util.ArrayList;
 
-import Models.FichaDiaria;
 import Models.IngredientesXFicha;
 
 public interface iIngredientesXFicha {

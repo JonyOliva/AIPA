@@ -5,9 +5,7 @@ import android.database.Cursor;
 
 import java.util.ArrayList;
 
-import Models.FichaDiaria;
 import Models.IngredientesXFicha;
-import Models.Sintoma;
 import iGestion.iIngredientesXFichaGestion;
 
 public class IngredientesXFichaGestion extends BaseGestion implements iIngredientesXFichaGestion {

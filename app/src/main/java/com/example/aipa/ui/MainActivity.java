@@ -7,14 +7,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.aipa.R;
 
-import java.util.Timer;
-
-import AsyncTasks.BackupUploadTimer;
+import AsyncTasks.SyncDatabase;
 import Connection.DataDB;
 import Connection.SQLHelper;
 import Gestion.UsuariosGestion;
 import Models.Usuario;
-import AsyncTasks.SyncDatabase;
 
 public class MainActivity extends AppCompatActivity {
 

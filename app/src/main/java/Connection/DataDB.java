@@ -1,10 +1,5 @@
 package Connection;
 
-import com.example.aipa.R;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-
 public class DataDB {
 
     private static SQLHelper LocalDb;

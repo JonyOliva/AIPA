@@ -2,6 +2,7 @@ package com.example.aipa.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -15,6 +16,7 @@ import Connection.SQLHelper;
 import Gestion.UsuariosGestion;
 import Models.Fase;
 import Models.Usuario;
+import Service.CheckUser;
 import Service.SyncDatabase;
 import Service.UsuariosService;
 
@@ -48,13 +50,8 @@ public class RegistrarUsuarioActivity extends AppCompatActivity {
 
     public void registrarUsuario(View view){
         UsuariosGestion ug = new UsuariosGestion();
-        UsuariosService us = new UsuariosService();
-
-        if(us.getUser(Email.getText().toString(), "") != null){
-            Toast.makeText(this, "Ese email ya está registrado.", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
+        CheckUser checkUser = new CheckUser(Email.getText().toString(), this);
+        checkUser.run();
         if(Validar()){
             Usuario user = new Usuario();
 

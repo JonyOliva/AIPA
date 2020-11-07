@@ -1,13 +1,21 @@
 package Service;
 
+import android.content.Context;
+import android.widget.Toast;
+
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.concurrent.Callable;
 
 import Models.Fase;
 import Models.Usuario;
 import iService.iUsuariosService;
 
-public class UsuariosService extends BaseService implements iUsuariosService {
+public class UsuariosService extends BaseService implements iUsuariosService{
+
+    public UsuariosService() {
+    }
+
 
     @Override
     public Usuario getUser(String mail, String pass) {
@@ -17,7 +25,7 @@ public class UsuariosService extends BaseService implements iUsuariosService {
         try{
             Statement st = con.createStatement();
             String query = "SELECT * FROM Users where email=':mail'";
-            if(pass.isEmpty()){
+            if(!pass.isEmpty()){
                 query +=  "and password =':pass'";
                 query = query.replace(":pass", pass);
             }

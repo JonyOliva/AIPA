@@ -11,6 +11,7 @@ import iService.iFichasService;
 public class FichasService extends BaseService implements iFichasService {
     @Override
     public ArrayList<FichaDiaria> getAllFromUser(String email) {
+        openConn();
         if(con == null)
             return null;
         try{
@@ -28,6 +29,7 @@ public class FichasService extends BaseService implements iFichasService {
                 ficha.setSintoma(new Sintoma(rs.getInt("idsintoma"), "", 0));
                 fichas.add(ficha);
             }
+            con.close();
             return fichas;
         }catch (Exception e){
             e.printStackTrace();

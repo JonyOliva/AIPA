@@ -11,6 +11,7 @@ public class UsuariosService extends BaseService implements iUsuariosService {
 
     @Override
     public Usuario getUser(String mail, String pass) {
+        openConn();
         if(con == null)
             return null;
         try{
@@ -22,8 +23,8 @@ public class UsuariosService extends BaseService implements iUsuariosService {
             }
             query = query.replace(":mail", mail);
             ResultSet rs = st.executeQuery(query);
+            Usuario user = new Usuario();
             if (rs.next()) {
-                Usuario user = new Usuario();
                 user.setEmail(rs.getString("email"));
                 user.setPassword(rs.getString("password"));
                 user.setApellido(rs.getString("apellido"));
@@ -34,9 +35,10 @@ public class UsuariosService extends BaseService implements iUsuariosService {
                 fase.setNroFase(rs.getInt("nrofase"));
                 user.setFase(fase);
 
-                return user;
             }
-            return null;
+            rs.close();
+            con.close();
+            return user;
         }catch (Exception e){
             e.printStackTrace();
             return null;
@@ -45,6 +47,7 @@ public class UsuariosService extends BaseService implements iUsuariosService {
 
     @Override
     public boolean insertUser(Usuario user) {
+        openConn();
         if(con == null)
             return false;
         try{
@@ -60,8 +63,9 @@ public class UsuariosService extends BaseService implements iUsuariosService {
             query = query.replace(":peso", Float.toString(user.getPeso()));
             query = query.replace(":alt", Float.toString(user.getAltura()));
             query = query.replace(":fase", Integer.toString(user.getFase().getNroFase()));
-            Boolean res =(st.executeUpdate(query) != -1);
-            return res;
+            int result = st.executeUpdate(query);
+            con.close();
+            return (result != -1);
         }catch (Exception e){
             e.printStackTrace();
             return false;
@@ -70,6 +74,7 @@ public class UsuariosService extends BaseService implements iUsuariosService {
 
     @Override
     public boolean updateUser(Usuario user) {
+        openConn();
         if(con == null)
             return false;
         try{
@@ -83,8 +88,9 @@ public class UsuariosService extends BaseService implements iUsuariosService {
             query = query.replace(":peso", Float.toString(user.getPeso()));
             query = query.replace(":alt", Float.toString(user.getAltura()));
             query = query.replace(":fase", Integer.toString(user.getFase().getNroFase()));
-            Boolean res =(st.executeUpdate(query) != -1);
-            return res;
+            int result = st.executeUpdate(query);
+            con.close();
+            return (result != -1);
         }catch (Exception e){
             e.printStackTrace();
             return false;

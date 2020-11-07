@@ -10,6 +10,7 @@ import iService.iSintomasService;
 public class SintomasService extends BaseService implements iSintomasService {
     @Override
     public ArrayList<Sintoma> getAll() {
+        openConn();
         if(con == null)
             return null;
         try{
@@ -24,6 +25,7 @@ public class SintomasService extends BaseService implements iSintomasService {
                 sin.setModificadorPuntaje(rs.getInt("modpuntaje"));
                 sintomas.add(sin);
             }
+            con.close();
             return sintomas;
         }catch (Exception e){
             e.printStackTrace();

@@ -26,6 +26,7 @@ public class IngredientesService extends BaseService implements iIngredientesSer
                 ing.setFase(new Fase(rs.getInt("fase"), rs.getString("descripcion")));
                 ingredientes.add(ing);
             }
+            con.close();
             return ingredientes;
         }catch (Exception e){
             e.printStackTrace();
@@ -52,6 +53,7 @@ public class IngredientesService extends BaseService implements iIngredientesSer
                 ing.setFase(new Fase(rs.getInt("fase"), rs.getString("descripcion")));
                 ingredientes.add(ing);
             }
+            con.close();
             return ingredientes;
         }catch (Exception e){
             e.printStackTrace();
@@ -73,8 +75,9 @@ public class IngredientesService extends BaseService implements iIngredientesSer
             query = query.replace(":nombre", ing.getNombre());
             query = query.replace(":punt", Integer.toString(ing.getPuntaje()));
             query = query.replace(":fase", Integer.toString(ing.getFase().getNroFase()));
-
-            return (st.executeUpdate(query) != -1);
+            int result = st.executeUpdate(query);
+            con.close();
+            return (result != -1);
         }catch (Exception e){
             e.printStackTrace();
             return false;
@@ -83,13 +86,16 @@ public class IngredientesService extends BaseService implements iIngredientesSer
 
     @Override
     public Boolean deleteAll(String email) {
+        openConn();
         if(con == null)
             return false;
         try{
             Statement st = con.createStatement();
             String query = "DELETE FROM Ingredientes WHERE usuario =':mail';";
             query = query.replace(":mail", email);
-            return (st.executeUpdate(query) != -1);
+            int result = st.executeUpdate(query);
+            con.close();
+            return (result != -1);
         }catch (Exception e){
             e.printStackTrace();
             return false;

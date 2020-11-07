@@ -38,8 +38,8 @@ public class CalendarioActivity extends AppCompatActivity {
 
         CalendarView calendarView = (CalendarView)findViewById(R.id.calendarView);
         YearMonth currentMonth = YearMonth.now();
-        YearMonth firstMonth = currentMonth.minusMonths(10);
-        YearMonth lastMonth = currentMonth.plusMonths(10);
+        YearMonth firstMonth = currentMonth.minusMonths(12);
+        YearMonth lastMonth = currentMonth;
         DayOfWeek firstDayOfWeek = WeekFields.of(Locale.getDefault()).getFirstDayOfWeek();
         calendarView.setup(firstMonth, lastMonth, firstDayOfWeek);
         calendarView.scrollToMonth(currentMonth);
@@ -54,30 +54,36 @@ public class CalendarioActivity extends AppCompatActivity {
                 TextView textView = dayViewContainer.getTextView();
                 textView.setText(String.valueOf(calendarDay.getDate().getDayOfMonth()));
                 if (calendarDay.getOwner() != DayOwner.THIS_MONTH) {
+                    textView.setOnClickListener(null);
                     textView.setTextColor(Color.GRAY);
+                    textView.setBackgroundColor(Color.TRANSPARENT);
                     return;
                 }
                 textView.setTextColor(Color.BLACK);
                 FichaDiaria fd = fg.get(calendarDay.getDate().toString());
-                if(LocalDate.now().compareTo(calendarDay.getDate()) <= 0 || fd == null ) return;
+                if(LocalDate.now().compareTo(calendarDay.getDate()) <= 0 || fd == null ){
+                    textView.setOnClickListener(null);
+                    textView.setBackgroundColor(Color.TRANSPARENT);
+                    return;
+                }
                 textView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         Toast.makeText(getApplicationContext(), "ficha diaria", Toast.LENGTH_SHORT).show();
                     }
                 });
-                int coloropc = fd.getSintoma().getModificadorPuntaje();
+                int coloropc = fd.getSintoma().getIdSintoma();
                 switch (coloropc){
-                    case 0:
+                    case 1:
                         textView.setBackgroundColor(getResources().getColor(R.color.verde));
                         break;
-                    case 1:
+                    case 2:
                         textView.setBackgroundColor(getResources().getColor(R.color.amarillo));
                         break;
-                    case 2:
+                    case 3:
                         textView.setBackgroundColor(getResources().getColor(R.color.naranja));
                         break;
-                    case 3:
+                    case 4:
                         textView.setBackgroundColor(getResources().getColor(R.color.rojo));
                         break;
                 }

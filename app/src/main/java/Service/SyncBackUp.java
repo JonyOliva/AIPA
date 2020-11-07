@@ -8,15 +8,19 @@ import com.example.aipa.ui.MainActivity;
 
 import java.util.ArrayList;
 
+import Gestion.FichasGestion;
 import Gestion.IngredientesGestion;
 import Gestion.SintomasGestion;
 import Gestion.UsuariosGestion;
+import Models.FichaDiaria;
 import Models.Ingrediente;
 import Models.Sintoma;
 import Models.Usuario;
+import iGestion.iFichasGestion;
 import iGestion.iIngredientesGestion;
 import iGestion.iSintomasGestion;
 import iGestion.iUsuariosGestion;
+import iService.iFichasService;
 import iService.iIngredientesService;
 import iService.iSintomasService;
 import iService.iUsuariosService;
@@ -36,7 +40,7 @@ public class SyncBackUp extends AsyncTask<Void, Integer, Boolean> {
     @Override
     protected Boolean doInBackground(Void... voids) {
         if(SyncUser(email)){
-            SyncIngredientes(email);
+            SyncFichas();
         }
 
         Intent i = new Intent(context, MainActivity.class);
@@ -46,12 +50,12 @@ public class SyncBackUp extends AsyncTask<Void, Integer, Boolean> {
 
     private Boolean SyncFichas(){
         Boolean result = true;
-        iSintomasService ss = new SintomasService();
-        iSintomasGestion gs = new SintomasGestion();
-        gs.deleteAll();
-        ArrayList<Sintoma> sintomas = ss.getAll();
-        for(Sintoma sin:sintomas){
-            result = gs.save(sin);
+        iFichasService fs = new FichasService();
+        iFichasGestion fg = new FichasGestion();
+        fg.deleteAll();
+        ArrayList<FichaDiaria> fichas = fs.getAllFromUser(email);
+        for(FichaDiaria f:fichas){
+            result = fg.save(f);
         }
         return result;
     }

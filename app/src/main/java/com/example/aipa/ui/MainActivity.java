@@ -7,6 +7,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.aipa.R;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+
 import Connection.DataDB;
 import Connection.SQLHelper;
 import Gestion.UsuariosGestion;
@@ -28,15 +31,12 @@ public class MainActivity extends AppCompatActivity {
 
         UsuariosGestion ug = new UsuariosGestion();
         Usuario currentUser = ug.read();
-        IngredientesSync syncing = new IngredientesSync();
         if(currentUser == null){
             SyncDatabase syncdb = new SyncDatabase();
             syncdb.execute();
-            syncing.execute();
             Intent i = new Intent(this, RegistrarUsuarioActivity.class);
             startActivity(i);
         }else{
-            syncing.execute(currentUser.getEmail());
             Intent i = new Intent(this, MenuPrincipal.class);
             startActivity(i);
         }

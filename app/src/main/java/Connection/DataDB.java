@@ -1,8 +1,13 @@
 package Connection;
 
+import com.example.aipa.R;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+
 public class DataDB {
 
-    public static SQLHelper sqldb;
+    private static SQLHelper LocalDb;
     public final static String host="remotemysql.com";
     public final static String port="3306";
     public final static String nameBD="LGTzezroDl";
@@ -13,19 +18,20 @@ public class DataDB {
     public final static String driver = "com.mysql.jdbc.Driver";
 
     public static SQLHelper getSqldb() {
-        return sqldb;
+        return LocalDb;
     }
     public static void setSqldb(SQLHelper _db) {
         if(_db != null)
-        sqldb = _db;
+            LocalDb = _db;
     }
 
     @Override
     protected void finalize() throws Throwable {
-        if(sqldb != null){
-            sqldb.close();
+        if(LocalDb != null){
+            LocalDb.close();
         }
         super.finalize();
     }
+
 }
 

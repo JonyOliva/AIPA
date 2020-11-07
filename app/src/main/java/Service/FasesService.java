@@ -10,6 +10,7 @@ import iService.iFasesService;
 public class FasesService extends BaseService implements iFasesService{
     @Override
     public ArrayList<Fase> getAll() {
+        openConn();
         if(con == null)
             return null;
         try{
@@ -23,6 +24,7 @@ public class FasesService extends BaseService implements iFasesService{
                 fase.setDescripcion(rs.getString("descripcion"));
                 fases.add(fase);
             }
+            con.close();
             return fases;
         }catch (Exception e){
             e.printStackTrace();

@@ -22,7 +22,7 @@ public class FichasGestion extends BaseGestion implements iFichasGestion {
     }
 
     public FichaDiaria get(String date){ //ejem: 2020-30-10
-        String query = "select idficha, fecha, comentario, tiempoejercicio, idsintoma from FichasDiarias where fecha=':date'";
+        String query = "select idficha, fecha, comentario, tiempoejercicio, idsintoma  from FichasDiarias where fecha=':date'";
         query = query.replace(":date", date);
         Cursor cursor = db.rawQuery(query, null);
         if(cursor.getCount() <= 0)
@@ -33,7 +33,7 @@ public class FichasGestion extends BaseGestion implements iFichasGestion {
             f.setFecha(cursor.getString(1));
             f.setComentario(cursor.getString(2));
             f.setTiempoEjercicio(cursor.getInt(3));
-            f.setSintoma(new Sintoma(cursor.getInt(3), "", 0));
+            f.setSintoma(new Sintoma(cursor.getInt(4), "", 0));
         }
         cursor.close();
         return f;

@@ -9,7 +9,7 @@ public class BaseService {
 
     protected Connection con;
 
-    public BaseService() {
+    protected void openConn(){
         try{
             Class.forName(DataDB.driver);
             con = DriverManager.getConnection(DataDB.urlMySQL, DataDB.user, DataDB.pass);
@@ -18,10 +18,4 @@ public class BaseService {
         }
     }
 
-    @Override
-    protected void finalize() throws Throwable {
-        if(con != null)
-            con.close();
-        super.finalize();
-    }
 }

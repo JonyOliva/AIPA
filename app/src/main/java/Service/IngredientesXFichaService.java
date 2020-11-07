@@ -10,6 +10,7 @@ import iService.iIngredientesXFicha;
 public class IngredientesXFichaService extends BaseService implements iIngredientesXFicha {
     @Override
     public ArrayList<IngredientesXFicha> getAllFromUser(String email) {
+        openConn();
         if(con == null)
             return null;
         try{
@@ -24,6 +25,7 @@ public class IngredientesXFichaService extends BaseService implements iIngredien
                 ixf.setIdingrediente(rs.getInt("idingrediente"));
                 ixfs.add(ixf);
             }
+            con.close();
             return ixfs;
         }catch (Exception e){
             e.printStackTrace();

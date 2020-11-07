@@ -1,4 +1,4 @@
-package Service;
+package AsyncTasks;
 
 import android.content.Context;
 import android.content.Intent;
@@ -16,6 +16,9 @@ import Models.FichaDiaria;
 import Models.Ingrediente;
 import Models.Sintoma;
 import Models.Usuario;
+import Service.FichasService;
+import Service.IngredientesService;
+import Service.UsuariosService;
 import iGestion.iFichasGestion;
 import iGestion.iIngredientesGestion;
 import iGestion.iSintomasGestion;

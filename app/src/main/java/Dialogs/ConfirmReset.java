@@ -11,7 +11,7 @@ import androidx.fragment.app.DialogFragment;
 
 import Gestion.FichasGestion;
 import Gestion.IngredientesGestion;
-import Service.IngredientesSync;
+import AsyncTasks.IngredientesSync;
 import iGestion.iFichasGestion;
 import iGestion.iIngredientesGestion;
 

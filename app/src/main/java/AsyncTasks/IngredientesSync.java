@@ -1,4 +1,4 @@
-package Service;
+package AsyncTasks;
 
 import android.os.AsyncTask;
 
@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import Gestion.IngredientesGestion;
 import Models.Ingrediente;
+import Service.IngredientesService;
 import iGestion.iIngredientesGestion;
 import iService.iIngredientesService;
 

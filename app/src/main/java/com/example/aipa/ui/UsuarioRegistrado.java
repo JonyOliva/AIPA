@@ -2,21 +2,18 @@ package com.example.aipa.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.aipa.R;
 
-import Gestion.UsuariosGestion;
-import Models.Fase;
-import Models.Usuario;
-import Service.SyncBackUp;
-import Service.SyncDatabase;
-import Service.UsuariosService;
+import java.util.Timer;
+
+import AsyncTasks.BackupUploadTimer;
+import AsyncTasks.SyncBackUp;
+import AsyncTasks.SyncDatabase;
 
 public class UsuarioRegistrado extends AppCompatActivity {
 
@@ -39,6 +36,14 @@ public class UsuarioRegistrado extends AppCompatActivity {
             SyncBackUp sb = new SyncBackUp(Email.getText().toString(), Pass.getText().toString(),
                     this);
             sb.execute();
+            //Se programa la subida del backup
+            final long horas = 72; //0.01 hs = 36 sec
+            BackupUploadTimer backupUpload = new BackupUploadTimer();
+            Timer timer = new Timer();
+            long time = horas * 60 * 60 * 1000;
+            timer.purge();
+            timer.schedule(backupUpload, time/3, time);
+
             Toast.makeText(this, "Procesando...", Toast.LENGTH_SHORT).show();
     }
 }

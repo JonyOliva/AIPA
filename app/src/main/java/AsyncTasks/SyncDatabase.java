@@ -1,4 +1,4 @@
-package Service;
+package AsyncTasks;
 
 import android.os.AsyncTask;
 
@@ -8,6 +8,8 @@ import Gestion.FasesGestion;
 import Gestion.SintomasGestion;
 import Models.Fase;
 import Models.Sintoma;
+import Service.FasesService;
+import Service.SintomasService;
 import iGestion.iFasesGestion;
 import iGestion.iSintomasGestion;
 import iService.iFasesService;

@@ -7,17 +7,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.aipa.R;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
+import java.util.Timer;
 
+import AsyncTasks.BackupUploadTimer;
 import Connection.DataDB;
 import Connection.SQLHelper;
 import Gestion.UsuariosGestion;
 import Models.Usuario;
-import Service.FichasService;
-import Service.IngredientesSync;
-import Service.SyncDatabase;
-import Service.UsuariosService;
+import AsyncTasks.SyncDatabase;
 
 public class MainActivity extends AppCompatActivity {
 

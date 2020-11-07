@@ -1,4 +1,4 @@
-package Service;
+package AsyncTasks;
 
 import android.content.Context;
 import android.os.AsyncTask;
@@ -15,6 +15,10 @@ import Models.Ingrediente;
 import Models.IngredientesXFicha;
 import Models.Sintoma;
 import Models.Usuario;
+import Service.FichasService;
+import Service.IngredientesService;
+import Service.IngredientesXFichaService;
+import Service.UsuariosService;
 import iGestion.iFichasGestion;
 import iGestion.iIngredientesGestion;
 import iGestion.iIngredientesXFichaGestion;
@@ -29,16 +33,11 @@ import iService.iUsuariosService;
 public class UploadBackUp extends AsyncTask<Void, Integer, Boolean> {
 
     private Usuario user;
-    private Context context;
-
-    public UploadBackUp(Context context) {
-        this.context = context;
-        iUsuariosGestion ug = new UsuariosGestion();
-        user = ug.read();
-    }
 
     @Override
     protected Boolean doInBackground(Void... voids) {
+        iUsuariosGestion ug = new UsuariosGestion();
+        user = ug.read();
         upUser();
         upIngredientes();
         upFichas();

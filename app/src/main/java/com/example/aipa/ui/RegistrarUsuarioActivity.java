@@ -2,7 +2,6 @@ package com.example.aipa.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,13 +10,10 @@ import android.widget.Toast;
 
 import com.example.aipa.R;
 
-import Connection.DataDB;
-import Connection.SQLHelper;
 import Gestion.UsuariosGestion;
 import Models.Fase;
 import Models.Usuario;
-import Service.CheckUser;
-import Service.SyncDatabase;
+import AsyncTasks.SyncDatabase;
 import Service.UsuariosService;
 import iService.iUsuariosService;
 

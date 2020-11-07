@@ -1,6 +1,5 @@
 package com.example.aipa.ui;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -15,7 +14,7 @@ import Dialogs.ConfirmReset;
 import Gestion.UsuariosGestion;
 import Models.Fase;
 import Models.Usuario;
-import Service.UploadBackUp;
+import AsyncTasks.UploadBackUp;
 
 public class ConfiguracionActivity extends AppCompatActivity {
 

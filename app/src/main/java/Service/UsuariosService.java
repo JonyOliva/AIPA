@@ -42,11 +42,15 @@ public class UsuariosService extends BaseService implements iUsuariosService{
                 Fase fase = new Fase();
                 fase.setNroFase(rs.getInt("nrofase"));
                 user.setFase(fase);
-
+                rs.close();
+                con.close();
+                return user;
+            }else {
+                rs.close();
+                con.close();
+                return null;
             }
-            rs.close();
-            con.close();
-            return user;
+
         }catch (Exception e){
             e.printStackTrace();
             return null;

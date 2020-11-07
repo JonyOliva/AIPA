@@ -63,11 +63,33 @@ public class RegistrarUsuarioActivity extends AppCompatActivity {
                         }
                     });
 
+                }else{
+                    if(Validar()){
+                        Usuario user = new Usuario();
+
+                        user.setFase(new Fase(0,""));
+                        user.setEmail(Email.getText().toString());
+                        user.setPassword(Pass.getText().toString());
+                        user.setNombre(Nombre.getText().toString());
+                        user.setApellido(Apellido.getText().toString());
+                        user.setPeso(Float.parseFloat(Peso.getText().toString()));
+                        user.setAltura(Float.parseFloat(Altura.getText().toString()));
+                        ug.save(user);
+                        //Toast.makeText(getApplicationContext(), "Usuario registrado correctamente", Toast.LENGTH_SHORT).show();
+
+
+                        SyncDatabase syncdb = new SyncDatabase();
+                        syncdb.execute();
+                    }
+                    if(ug.read()!=null){
+                        Intent i = new Intent(getApplicationContext(), MenuPrincipal.class);
+                        startActivity(i);
+                    }
                 }
             }
         }).start();
 
-        if(Validar()){
+        /*if(Validar()){
             Usuario user = new Usuario();
 
             user.setFase(new Fase(0,""));
@@ -86,7 +108,7 @@ public class RegistrarUsuarioActivity extends AppCompatActivity {
 
             Intent i = new Intent(this, MenuPrincipal.class);
             startActivity(i);
-        }
+        }*/
     }
 
     public boolean Validar(){

@@ -36,4 +36,46 @@ public class FichasService extends BaseService implements iFichasService {
             return null;
         }
     }
+
+    @Override
+    public Boolean deleteAll(String email) {
+        openConn();
+        if(con == null)
+            return false;
+        try{
+            Statement st = con.createStatement();
+            String query = "DELETE FROM FichasDiarias WHERE usuario =':mail';";
+            query = query.replace(":mail", email);
+            int result = st.executeUpdate(query);
+            con.close();
+            return (result != -1);
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    @Override
+    public Boolean save(FichaDiaria fd, String email) {
+        if(con == null)
+            return false;
+        try{
+            Statement st = con.createStatement();
+            String query = "INSERT INTO `FichasDiarias` (`fecha`, `comentario`," +
+                    " `tiempoejercicio`, `idsintoma`, `usuario`) VALUES (";
+            String ins = "':fecha',':com',:te,:sintoma,':user')";
+            query += ins;
+            query = query.replace(":user", email);
+            query = query.replace(":fecha", fd.getFecha());
+            query = query.replace(":com", fd.getComentario());
+            query = query.replace(":te", Integer.toString(fd.getTiempoEjercicio()));
+            query = query.replace(":sintoma", Integer.toString(fd.getSintoma().getIdSintoma()));
+            int result = st.executeUpdate(query);
+            con.close();
+            return (result != -1);
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+    }
 }

@@ -3,7 +3,11 @@ package Gestion;
 import android.content.ContentValues;
 import android.database.Cursor;
 
+import java.util.ArrayList;
+
+import Models.Fase;
 import Models.FichaDiaria;
+import Models.Ingrediente;
 import Models.Sintoma;
 import iGestion.iFichasGestion;
 
@@ -43,5 +47,27 @@ public class FichasGestion extends BaseGestion implements iFichasGestion {
     public Boolean deleteAll() {
         int res = db.delete("FichasDiarias", null, null);
         return res > 0;
+    }
+
+    @Override
+    public ArrayList<FichaDiaria> getAll() {
+        ArrayList<FichaDiaria> fichas = new ArrayList<FichaDiaria>();
+        String query = "Select idficha, fecha, comentario, tiempoejercicio, idsintoma from FichasDiarias";
+        Cursor cursor = db.rawQuery(query, null);
+        if(cursor.getCount() <= 0)
+            return null;
+        if(cursor.moveToFirst()){
+            do {
+                FichaDiaria fd = new FichaDiaria();
+                fd.setIdFicha(cursor.getInt(0));
+                fd.setFecha(cursor.getString(1));
+                fd.setComentario(cursor.getString(2));
+                fd.setTiempoEjercicio(cursor.getInt(3));
+                fd.setSintoma(new Sintoma(cursor.getInt(4),"",0));
+                fichas.add(fd);
+            }while(cursor.moveToNext());
+        }
+        cursor.close();
+        return fichas;
     }
 }

@@ -32,4 +32,44 @@ public class IngredientesXFichaService extends BaseService implements iIngredien
             return null;
         }
     }
+
+    @Override
+    public Boolean deleteAll(String email) {
+        openConn();
+        if(con == null)
+            return false;
+        try{
+            Statement st = con.createStatement();
+            String query = "DELETE FROM IngredientesXFicha WHERE usuario =':mail';";
+            query = query.replace(":mail", email);
+            int result = st.executeUpdate(query);
+            con.close();
+            return (result != -1);
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    @Override
+    public Boolean save(IngredientesXFicha ixf, String email) {
+        if(con == null)
+            return false;
+        try{
+            Statement st = con.createStatement();
+            String query = "INSERT INTO `IngredientesXFicha` (`idingrediente`, `idficha`," +
+                    " `usuario`) VALUES (";
+            String ins = ":ing,:ficha,':user')";
+            query += ins;
+            query = query.replace(":user", email);
+            query = query.replace(":ficha", Integer.toString(ixf.getIdficha()));
+            query = query.replace(":ing", Integer.toString(ixf.getIdingrediente()));
+            int result = st.executeUpdate(query);
+            con.close();
+            return (result != -1);
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+    }
 }

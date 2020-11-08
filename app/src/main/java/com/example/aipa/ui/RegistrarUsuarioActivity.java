@@ -10,11 +10,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.aipa.R;
 
+import java.util.Timer;
+
+import AsyncTasks.BackupUploadTimer;
+import AsyncTasks.IngredientesSync;
 import AsyncTasks.SyncDatabase;
+import AsyncTasks.UploadBackUp;
 import Gestion.UsuariosGestion;
 import Models.Fase;
 import Models.Usuario;
 import Service.UsuariosService;
+import iGestion.iUsuariosGestion;
 import iService.iUsuariosService;
 
 public class RegistrarUsuarioActivity extends AppCompatActivity {
@@ -71,40 +77,36 @@ public class RegistrarUsuarioActivity extends AppCompatActivity {
                         user.setPeso(Float.parseFloat(Peso.getText().toString()));
                         user.setAltura(Float.parseFloat(Altura.getText().toString()));
                         ug.save(user);
+                        //Se programa la subida del backup
+                        final long horas = 72; //0.01 hs = 36 sec
+                        BackupUploadTimer backupUpload = new BackupUploadTimer(getApplicationContext());
+                        Timer timer = new Timer();
+                        long time = horas * 60 * 60 * 1000;
+                        timer.schedule(backupUpload, time/3, time);
                         //Toast.makeText(getApplicationContext(), "Usuario registrado correctamente", Toast.LENGTH_SHORT).show();
 
+                            if(us.insertUser(user)) {
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        Toast.makeText(getApplicationContext(), "Usuario registrado.", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
 
-                        SyncDatabase syncdb = new SyncDatabase();
-                        syncdb.execute();
+                            }
                     }
-                    if(ug.read()!=null){
-                        Intent i = new Intent(getApplicationContext(), MenuPrincipal.class);
-                        startActivity(i);
-                    }
+
+                    SyncDatabase syncdb = new SyncDatabase();
+                    syncdb.execute();
+                    IngredientesSync is = new IngredientesSync();
+                    is.execute();
+                    //UploadBackUp upBKP = new UploadBackUp(getApplicationContext());
+                    //upBKP.execute();
+                    Intent i = new Intent(getApplicationContext(), MenuPrincipal.class);
+                    startActivity(i);
                 }
             }
         }).start();
-
-        /*if(Validar()){
-            Usuario user = new Usuario();
-
-            user.setFase(new Fase(0,""));
-            user.setEmail(Email.getText().toString());
-            user.setPassword(Pass.getText().toString());
-            user.setNombre(Nombre.getText().toString());
-            user.setApellido(Apellido.getText().toString());
-            user.setPeso(Float.parseFloat(Peso.getText().toString()));
-            user.setAltura(Float.parseFloat(Altura.getText().toString()));
-            ug.save(user);
-            Toast.makeText(this, "Usuario registrado correctamente", Toast.LENGTH_SHORT).show();
-
-
-            SyncDatabase syncdb = new SyncDatabase();
-            syncdb.execute();
-
-            Intent i = new Intent(this, MenuPrincipal.class);
-            startActivity(i);
-        }*/
     }
 
     public boolean Validar(){

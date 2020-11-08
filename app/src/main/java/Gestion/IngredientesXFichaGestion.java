@@ -38,4 +38,10 @@ public class IngredientesXFichaGestion extends BaseGestion implements iIngredien
         cursor.close();
         return ixf;
     }
+
+    @Override
+    public Boolean deleteAll() {
+        int res = db.delete("IngredientesXFicha", null, null);
+        return res > 0;
+    }
 }

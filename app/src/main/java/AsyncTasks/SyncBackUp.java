@@ -10,18 +10,23 @@ import java.util.ArrayList;
 
 import Gestion.FichasGestion;
 import Gestion.IngredientesGestion;
+import Gestion.IngredientesXFichaGestion;
 import Gestion.UsuariosGestion;
 import Models.FichaDiaria;
 import Models.Ingrediente;
+import Models.IngredientesXFicha;
 import Models.Usuario;
 import Service.FichasService;
 import Service.IngredientesService;
+import Service.IngredientesXFichaService;
 import Service.UsuariosService;
 import iGestion.iFichasGestion;
 import iGestion.iIngredientesGestion;
+import iGestion.iIngredientesXFichaGestion;
 import iGestion.iUsuariosGestion;
 import iService.iFichasService;
 import iService.iIngredientesService;
+import iService.iIngredientesXFicha;
 import iService.iUsuariosService;
 
 
@@ -38,7 +43,7 @@ public class SyncBackUp extends AsyncTask<Void, Integer, Boolean> {
     }
     @Override
     protected Boolean doInBackground(Void... voids) {
-        if(SyncUser(email)){
+        if(SyncUser()){
             SyncFichas();
         }
 
@@ -59,7 +64,7 @@ public class SyncBackUp extends AsyncTask<Void, Integer, Boolean> {
         return result;
     }
 
-    private Boolean SyncUser(String e){
+    private Boolean SyncUser(){
         Boolean result = true;
         iUsuariosService us = new UsuariosService();
         iUsuariosGestion ug = new UsuariosGestion();
@@ -72,13 +77,13 @@ public class SyncBackUp extends AsyncTask<Void, Integer, Boolean> {
         return result;
     }
 
-    private Boolean SyncIngredientes(String e){
+    private Boolean SyncIngredientesXficha(){
         Boolean result = true;
-        iIngredientesService is = new IngredientesService();
-        iIngredientesGestion ig = new IngredientesGestion();
+        iIngredientesXFicha is = new IngredientesXFichaService();
+        iIngredientesXFichaGestion ig = new IngredientesXFichaGestion();
         ig.deleteAll();
-        ArrayList<Ingrediente> ingredientes = is.getAllForUser(e);
-        for(Ingrediente ing:ingredientes){
+        ArrayList<IngredientesXFicha> ingredientes = is.getAllFromUser(email);
+        for(IngredientesXFicha ing:ingredientes){
             result = ig.save(ing);
         }
         return result;

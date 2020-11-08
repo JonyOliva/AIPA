@@ -16,14 +16,17 @@ public class IngredientesSync extends AsyncTask<String, Integer, Boolean> {
         Boolean result = true;
         iIngredientesService is = new IngredientesService();
         iIngredientesGestion ig = new IngredientesGestion();
+        ig.deleteAll();
         ArrayList<Ingrediente> ingredientes;
         if(email.length == 0){
             ingredientes = is.getAllDefault();
         }else{
             ingredientes = is.getAllForUser(email[0]);
         }
-        for(Ingrediente ing:ingredientes){
-            result = ig.save(ing);
+        if(ingredientes != null){
+            for(Ingrediente ing:ingredientes){
+                result = ig.save(ing);
+            }
         }
         return result;
     }

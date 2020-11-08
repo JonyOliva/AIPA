@@ -80,8 +80,9 @@ public class UploadBackUp extends AsyncTask<Void, Integer, Boolean> {
             for(Ingrediente ing:ingredientes){
                 result = result && is.save(ing, user.getEmail());
             }
+            return result;
         }
-        return result;
+        return  false;
     }
 
     private Boolean upIngredientesxFicha(){

@@ -11,6 +11,7 @@ import iService.iIngredientesService;
 public class IngredientesService extends BaseService implements iIngredientesService {
     @Override
     public ArrayList<Ingrediente> getAllDefault() {
+        openConn();
         if(con == null)
             return null;
         try{
@@ -36,6 +37,7 @@ public class IngredientesService extends BaseService implements iIngredientesSer
 
     @Override
     public ArrayList<Ingrediente> getAllForUser(String email) {
+        openConn();
         if(con == null)
         return null;
         try{
@@ -63,14 +65,16 @@ public class IngredientesService extends BaseService implements iIngredientesSer
 
     @Override
     public Boolean save(Ingrediente ing, String email) {
+        openConn();
         if(con == null)
             return false;
         try{
             Statement st = con.createStatement();
-            String query = "INSERT INTO `Ingredientes` (`nombre`, `puntaje`," +
+            String query = "INSERT INTO `Ingredientes` (`idingrediente`, `nombre`, `puntaje`," +
                     " `fase`, `usuario`) VALUES (";
-            String ins = "':nombre',:punt,:fase,':user')";
+            String ins = ":id,':nombre',:punt,:fase,':user')";
             query += ins;
+            query = query.replace(":id", Integer.toString(ing.getIdIngrediente()));
             query = query.replace(":user", email);
             query = query.replace(":nombre", ing.getNombre());
             query = query.replace(":punt", Integer.toString(ing.getPuntaje()));

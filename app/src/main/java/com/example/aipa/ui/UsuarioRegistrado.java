@@ -12,6 +12,7 @@ import com.example.aipa.R;
 import java.util.Timer;
 
 import AsyncTasks.BackupUploadTimer;
+import AsyncTasks.IngredientesSync;
 import AsyncTasks.SyncBackUp;
 import AsyncTasks.SyncDatabase;
 
@@ -33,6 +34,8 @@ public class UsuarioRegistrado extends AppCompatActivity {
     public void validarUsuario(View view){
             SyncDatabase syncdb = new SyncDatabase();
             syncdb.execute();
+            IngredientesSync is = new IngredientesSync();
+            is.execute(Email.getText().toString());
             SyncBackUp sb = new SyncBackUp(Email.getText().toString(), Pass.getText().toString(),
                     this);
             sb.execute();

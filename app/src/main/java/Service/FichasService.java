@@ -61,10 +61,11 @@ public class FichasService extends BaseService implements iFichasService {
             return false;
         try{
             Statement st = con.createStatement();
-            String query = "INSERT INTO `FichasDiarias` (`fecha`, `comentario`," +
+            String query = "INSERT INTO `FichasDiarias` (`idficha`, `fecha`, `comentario`," +
                     " `tiempoejercicio`, `idsintoma`, `usuario`) VALUES (";
-            String ins = "':fecha',':com',:te,:sintoma,':user')";
+            String ins = ":id,':fecha',':com',:te,:sintoma,':user')";
             query += ins;
+            query = query.replace(":id", Integer.toString(fd.getIdFicha()));
             query = query.replace(":user", email);
             query = query.replace(":fecha", fd.getFecha());
             query = query.replace(":com", fd.getComentario());

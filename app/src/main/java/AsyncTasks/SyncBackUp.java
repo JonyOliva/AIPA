@@ -45,6 +45,7 @@ public class SyncBackUp extends AsyncTask<Void, Integer, Boolean> {
     protected Boolean doInBackground(Void... voids) {
         if(SyncUser()){
             SyncFichas();
+            SyncIngredientesXficha();
         }
 
         Intent i = new Intent(context, MainActivity.class);

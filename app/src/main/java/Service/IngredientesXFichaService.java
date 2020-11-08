@@ -53,6 +53,7 @@ public class IngredientesXFichaService extends BaseService implements iIngredien
 
     @Override
     public Boolean save(IngredientesXFicha ixf, String email) {
+        openConn();
         if(con == null)
             return false;
         try{

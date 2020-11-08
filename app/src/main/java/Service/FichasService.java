@@ -57,6 +57,7 @@ public class FichasService extends BaseService implements iFichasService {
 
     @Override
     public Boolean save(FichaDiaria fd, String email) {
+        openConn();
         if(con == null)
             return false;
         try{

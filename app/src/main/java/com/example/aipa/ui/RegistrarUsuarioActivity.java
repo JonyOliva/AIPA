@@ -65,8 +65,7 @@ public class RegistrarUsuarioActivity extends AppCompatActivity {
                         }
                     });
 
-                }else{
-                    if(Validar()){
+                }else if(Validar()){
                         Usuario user = new Usuario();
 
                         user.setFase(new Fase(0,""));
@@ -94,37 +93,57 @@ public class RegistrarUsuarioActivity extends AppCompatActivity {
                                 });
 
                             }
-                    }
+                        //Toast.makeText(this, "Los campos ingresados no son válidos.", Toast.LENGTH_SHORT).show();
 
-                    SyncDatabase syncdb = new SyncDatabase();
-                    syncdb.execute();
-                    IngredientesSync is = new IngredientesSync();
-                    is.execute();
-                    //UploadBackUp upBKP = new UploadBackUp(getApplicationContext());
-                    //upBKP.execute();
-                    Intent i = new Intent(getApplicationContext(), MenuPrincipal.class);
-                    startActivity(i);
+
+                        SyncDatabase syncdb = new SyncDatabase();
+                        syncdb.execute();
+                        IngredientesSync is = new IngredientesSync();
+                        is.execute();
+                        //UploadBackUp upBKP = new UploadBackUp(getApplicationContext());
+                        //upBKP.execute();
+                        Intent i = new Intent(getApplicationContext(), MenuPrincipal.class);
+                        startActivity(i);
                 }
             }
         }).start();
+        if(!Validar()){
+            Toast.makeText(this, "Los campos ingresados no son válidos.", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     public boolean Validar(){
         if(Email.getText().toString().isEmpty() || Pass.getText().toString().isEmpty() ||
                 Nombre.getText().toString().isEmpty() || Apellido.getText().toString().isEmpty()
                 || Peso.getText().toString().isEmpty() || Altura.getText().toString().isEmpty()){
-            Toast.makeText(this, "No pueden haber campos vacíos.", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "No pueden haber campos vacíos.", Toast.LENGTH_SHORT).show();
+            return false;
+        } else if(!ValidarFloat()){
+            //Toast.makeText(this, "El número ingresado es inválido.", Toast.LENGTH_SHORT).show();
             return false;
         }else if(!isEmailValid(Email.getText().toString())) {
-            Toast.makeText(this, "El email ingresado es inválido.", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "El email ingresado es inválido.", Toast.LENGTH_SHORT).show();
             return false;
-        }else
+        }
+        else
         {
             return true;
         }
     }
     public boolean isEmailValid(CharSequence email) {
         return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
+    }
+
+    public boolean ValidarFloat(){
+        try {
+                Float.parseFloat(Peso.getText().toString());
+                Float.parseFloat(Altura.getText().toString());
+                return  true;
+            } catch (NumberFormatException e) {
+                e.printStackTrace();
+                return  false;
+            }
     }
 
 

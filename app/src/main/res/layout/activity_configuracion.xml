@@ -40,6 +40,7 @@
 
             <EditText
                 android:id="@+id/txtNombre"
+                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
@@ -49,6 +50,7 @@
 
             <EditText
                 android:id="@+id/txtApellido"
+                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="28dp"
@@ -58,21 +60,21 @@
 
             <EditText
                 android:id="@+id/txtPeso"
+                android:digits="0123456789."
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="28dp"
                 android:ems="10"
-                android:hint="Peso"
-                android:inputType="number" />
+                android:hint="Peso" />
 
             <EditText
                 android:id="@+id/txtAltura"
+                android:digits="0123456789."
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="28dp"
                 android:ems="10"
-                android:hint="Altura"
-                android:inputType="number" />
+                android:hint="Altura" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"

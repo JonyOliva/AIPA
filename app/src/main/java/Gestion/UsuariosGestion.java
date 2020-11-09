@@ -2,12 +2,20 @@ package Gestion;
 
 import android.content.ContentValues;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 
 import Models.Fase;
 import Models.Usuario;
 import iGestion.iUsuariosGestion;
 
 public class UsuariosGestion extends BaseGestion implements iUsuariosGestion {
+
+    public UsuariosGestion(SQLiteDatabase db) {
+        super(db);
+    }
+
+    public UsuariosGestion() {
+    }
 
     @Override
     public Boolean save(Usuario usuario) {

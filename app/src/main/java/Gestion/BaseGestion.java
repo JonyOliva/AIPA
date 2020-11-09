@@ -10,4 +10,8 @@ public class BaseGestion {
     public BaseGestion() {
         db = DataDB.getSqldb().getWritableDatabase();
     }
+
+    public BaseGestion(SQLiteDatabase db) {
+        this.db = db;
+    }
 }

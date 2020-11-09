@@ -2,6 +2,7 @@ package Gestion;
 
 import android.content.ContentValues;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 
 import java.util.ArrayList;
 
@@ -9,6 +10,13 @@ import Models.IngredientesXFicha;
 import iGestion.iIngredientesXFichaGestion;
 
 public class IngredientesXFichaGestion extends BaseGestion implements iIngredientesXFichaGestion {
+
+    public IngredientesXFichaGestion(SQLiteDatabase db) {
+        super(db);
+    }
+
+    public IngredientesXFichaGestion() {
+    }
 
     @Override
     public Boolean save(IngredientesXFicha ixf) {

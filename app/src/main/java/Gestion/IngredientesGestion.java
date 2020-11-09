@@ -2,6 +2,7 @@ package Gestion;
 
 import android.content.ContentValues;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 
 import java.util.ArrayList;
 
@@ -10,6 +11,13 @@ import Models.Ingrediente;
 import iGestion.iIngredientesGestion;
 
 public class IngredientesGestion extends BaseGestion implements iIngredientesGestion {
+    public IngredientesGestion(SQLiteDatabase db) {
+        super(db);
+    }
+
+    public IngredientesGestion() {
+    }
+
     @Override
     public ArrayList<Ingrediente> getAll() {
         ArrayList<Ingrediente> ingredientes = new ArrayList<Ingrediente>();

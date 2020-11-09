@@ -2,6 +2,7 @@ package Gestion;
 
 import android.content.ContentValues;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 
 import java.util.ArrayList;
 
@@ -10,6 +11,13 @@ import Models.Sintoma;
 import iGestion.iFichasGestion;
 
 public class FichasGestion extends BaseGestion implements iFichasGestion {
+
+    public FichasGestion(SQLiteDatabase db) {
+        super(db);
+    }
+
+    public FichasGestion() {
+    }
 
     @Override
     public boolean save(FichaDiaria ficha) {

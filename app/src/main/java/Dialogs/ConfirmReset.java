@@ -72,14 +72,14 @@ public class ConfirmReset extends DialogFragment {
                     new Thread(new Runnable() {
                         @Override
                         public void run() {
+                            iIngredientesXFichaService ixfs = new IngredientesXFichaService();
+                            ixfs.deleteAll(user.getEmail());
                             iFichasService fs = new FichasService();
                             fs.deleteAll(user.getEmail());
                             iIngredientesService is = new IngredientesService();
                             is.deleteAll(user.getEmail());
-                            iIngredientesXFichaService ixfs = new IngredientesXFichaService();
-                            ixfs.deleteAll(user.getEmail());
                         }
-                    });
+                    }).start();
                 }
                 Intent p = new Intent(getContext(), MainActivity.class);
                 startActivity(p);

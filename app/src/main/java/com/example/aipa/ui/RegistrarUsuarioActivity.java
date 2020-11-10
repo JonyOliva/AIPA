@@ -65,8 +65,7 @@ public class RegistrarUsuarioActivity extends AppCompatActivity {
                         }
                     });
 
-                }else{
-                    if(Validar()){
+                }else if(Validar()){
                         Usuario user = new Usuario();
 
                         user.setFase(new Fase(0,""));
@@ -77,12 +76,6 @@ public class RegistrarUsuarioActivity extends AppCompatActivity {
                         user.setPeso(Float.parseFloat(Peso.getText().toString()));
                         user.setAltura(Float.parseFloat(Altura.getText().toString()));
                         ug.save(user);
-                        //Se programa la subida del backup
-                        final long horas = 72; //0.01 hs = 36 sec
-                        BackupUploadTimer backupUpload = new BackupUploadTimer(getApplicationContext());
-                        Timer timer = new Timer();
-                        long time = horas * 60 * 60 * 1000;
-                        timer.schedule(backupUpload, time/3, time);
                         //Toast.makeText(getApplicationContext(), "Usuario registrado correctamente", Toast.LENGTH_SHORT).show();
 
                             if(us.insertUser(user)) {
@@ -94,37 +87,48 @@ public class RegistrarUsuarioActivity extends AppCompatActivity {
                                 });
 
                             }
-                    }
-
-                    SyncDatabase syncdb = new SyncDatabase();
-                    syncdb.execute();
-                    IngredientesSync is = new IngredientesSync();
-                    is.execute();
-                    //UploadBackUp upBKP = new UploadBackUp(getApplicationContext());
-                    //upBKP.execute();
-                    Intent i = new Intent(getApplicationContext(), MenuPrincipal.class);
-                    startActivity(i);
+                        Intent i = new Intent(getApplicationContext(), UsuarioRegistrado.class);
+                        startActivity(i);
                 }
             }
         }).start();
+        if(!Validar()){
+            Toast.makeText(this, "Los campos ingresados no son válidos.", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     public boolean Validar(){
         if(Email.getText().toString().isEmpty() || Pass.getText().toString().isEmpty() ||
                 Nombre.getText().toString().isEmpty() || Apellido.getText().toString().isEmpty()
                 || Peso.getText().toString().isEmpty() || Altura.getText().toString().isEmpty()){
-            Toast.makeText(this, "No pueden haber campos vacíos.", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "No pueden haber campos vacíos.", Toast.LENGTH_SHORT).show();
+            return false;
+        } else if(!ValidarFloat()){
+            //Toast.makeText(this, "El número ingresado es inválido.", Toast.LENGTH_SHORT).show();
             return false;
         }else if(!isEmailValid(Email.getText().toString())) {
-            Toast.makeText(this, "El email ingresado es inválido.", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "El email ingresado es inválido.", Toast.LENGTH_SHORT).show();
             return false;
-        }else
+        }
+        else
         {
             return true;
         }
     }
     public boolean isEmailValid(CharSequence email) {
         return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
+    }
+
+    public boolean ValidarFloat(){
+        try {
+                Float.parseFloat(Peso.getText().toString());
+                Float.parseFloat(Altura.getText().toString());
+                return  true;
+            } catch (NumberFormatException e) {
+                e.printStackTrace();
+                return  false;
+            }
     }
 
 

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import Models.IngredientesXFicha;
 
-public interface iIngredientesXFicha {
+public interface iIngredientesXFichaService {
     public ArrayList<IngredientesXFicha> getAllFromUser(String email);
     public Boolean deleteAll(String email);
     public Boolean save(IngredientesXFicha ixf, String email);

@@ -28,6 +28,8 @@ public class IngredientesSync extends AsyncTask<String, Integer, Boolean> {
             ingredientes = is.getAllDefault();
         }else{
             ingredientes = is.getAllForUser(email[0]);
+            if(ingredientes.isEmpty())
+                ingredientes = is.getAllDefault();
         }
         if(ingredientes != null){
             for(Ingrediente ing:ingredientes){

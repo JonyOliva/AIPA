@@ -5,9 +5,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import Models.IngredientesXFicha;
-import iService.iIngredientesXFicha;
+import iService.iIngredientesXFichaService;
 
-public class IngredientesXFichaService extends BaseService implements iIngredientesXFicha {
+public class IngredientesXFichaService extends BaseService implements iIngredientesXFichaService {
     @Override
     public ArrayList<IngredientesXFicha> getAllFromUser(String email) {
         openConn();

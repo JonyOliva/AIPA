@@ -24,7 +24,7 @@ import iGestion.iIngredientesXFichaGestion;
 import iGestion.iUsuariosGestion;
 import iService.iFichasService;
 import iService.iIngredientesService;
-import iService.iIngredientesXFicha;
+import iService.iIngredientesXFichaService;
 import iService.iUsuariosService;
 
 public class UploadBackUp extends AsyncTask<Void, Integer, Boolean> {
@@ -87,7 +87,7 @@ public class UploadBackUp extends AsyncTask<Void, Integer, Boolean> {
 
     private Boolean upIngredientesxFicha(){
         Boolean result = true;
-        iIngredientesXFicha ixfs = new IngredientesXFichaService();
+        iIngredientesXFichaService ixfs = new IngredientesXFichaService();
         iIngredientesXFichaGestion ixfg = new IngredientesXFichaGestion();
         ixfs.deleteAll(user.getEmail());
         ArrayList<IngredientesXFicha> ixf = ixfg.getAll();

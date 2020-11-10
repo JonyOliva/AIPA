@@ -18,6 +18,7 @@ public class FichasGestion extends BaseGestion implements iFichasGestion {
     }
 
     public FichasGestion() {
+        super();
     }
 
     @Override

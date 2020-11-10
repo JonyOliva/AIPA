@@ -64,6 +64,27 @@ public class FichasGestion extends BaseGestion implements iFichasGestion {
     }
 
     @Override
+    public FichaDiaria getAnterior() {
+        String query = "select idficha, fecha, comentario, tiempoejercicio, idsintoma  from FichasDiarias where idsintoma=-1";
+
+        Cursor cursor = db.rawQuery(query, null);
+        if(cursor.getCount() <= 0)
+            return null;
+        FichaDiaria f = new FichaDiaria();
+        if(cursor.moveToFirst()){
+            f.setIdFicha(cursor.getInt(0));
+            f.setFecha(cursor.getString(1));
+            f.setComentario(cursor.getString(2));
+            f.setTiempoEjercicio(cursor.getInt(3));
+            f.setSintoma(new Sintoma(cursor.getInt(4), "", 0));
+        }
+        cursor.close();
+        return f;
+    }
+
+
+
+    @Override
     public Boolean deleteAll() {
         int res = db.delete("FichasDiarias", null, null);
         return res > 0;

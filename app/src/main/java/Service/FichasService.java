@@ -104,4 +104,9 @@ public class FichasService extends BaseService implements iFichasService {
             return false;
         }
     }
+
+    @Override
+    public FichaDiaria getAnterior() {
+        return null;
+    }
 }

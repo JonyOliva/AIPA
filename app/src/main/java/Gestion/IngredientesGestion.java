@@ -16,6 +16,7 @@ public class IngredientesGestion extends BaseGestion implements iIngredientesGes
     }
 
     public IngredientesGestion() {
+        super();
     }
 
     @Override

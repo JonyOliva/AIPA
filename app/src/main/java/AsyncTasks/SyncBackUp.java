@@ -23,7 +23,7 @@ import iGestion.iFichasGestion;
 import iGestion.iIngredientesXFichaGestion;
 import iGestion.iUsuariosGestion;
 import iService.iFichasService;
-import iService.iIngredientesXFicha;
+import iService.iIngredientesXFichaService;
 import iService.iUsuariosService;
 
 
@@ -81,7 +81,7 @@ public class SyncBackUp extends AsyncTask<Void, Integer, Boolean> {
 
     private Boolean SyncIngredientesXficha(){
         Boolean result = true;
-        iIngredientesXFicha is = new IngredientesXFichaService();
+        iIngredientesXFichaService is = new IngredientesXFichaService();
         iIngredientesXFichaGestion ig = new IngredientesXFichaGestion(db);
         ig.deleteAll();
         ArrayList<IngredientesXFicha> ingredientes = is.getAllFromUser(email);

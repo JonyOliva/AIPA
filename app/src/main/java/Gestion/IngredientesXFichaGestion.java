@@ -16,6 +16,7 @@ public class IngredientesXFichaGestion extends BaseGestion implements iIngredien
     }
 
     public IngredientesXFichaGestion() {
+        super();
     }
 
     @Override

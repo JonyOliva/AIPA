@@ -15,6 +15,7 @@ public class UsuariosGestion extends BaseGestion implements iUsuariosGestion {
     }
 
     public UsuariosGestion() {
+        super();
     }
 
     @Override

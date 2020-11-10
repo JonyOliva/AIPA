@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import Models.FichaDiaria;
 import Models.Sintoma;
+import Models.Usuario;
 import iGestion.iFichasGestion;
 
 public class FichasGestion extends BaseGestion implements iFichasGestion {
@@ -28,6 +29,18 @@ public class FichasGestion extends BaseGestion implements iFichasGestion {
         values.put("idsintoma", ficha.getSintoma().getIdSintoma());
         long result;
         result = db.insert("FichasDiarias",null, values);
+        return (result != -1);
+    }
+
+    @Override
+    public Boolean update(FichaDiaria ficha) {
+        ContentValues values = new ContentValues();
+        values.put("comentario", ficha.getComentario());
+        values.put("tiempoejercicio", ficha.getTiempoEjercicio());
+        values.put("idsintoma", ficha.getSintoma().getIdSintoma());
+
+        long result;
+        result = db.update("FichasDiarias", values,"", new String[0]);
         return (result != -1);
     }
 

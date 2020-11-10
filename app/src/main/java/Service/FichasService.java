@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import Models.FichaDiaria;
 import Models.Sintoma;
+import Models.Usuario;
 import iService.iFichasService;
 
 public class FichasService extends BaseService implements iFichasService {
@@ -72,6 +73,29 @@ public class FichasService extends BaseService implements iFichasService {
             query = query.replace(":com", fd.getComentario());
             query = query.replace(":te", Integer.toString(fd.getTiempoEjercicio()));
             query = query.replace(":sintoma", Integer.toString(fd.getSintoma().getIdSintoma()));
+            int result = st.executeUpdate(query);
+            con.close();
+            return (result != -1);
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    @Override
+    public Boolean update(FichaDiaria fd) {
+        openConn();
+        if(con == null)
+            return false;
+        try{
+            Statement st = con.createStatement();
+            String query = "UPDATE FichasDiarias SET comentario = ':com', TiempoEjercicio = ':tej'," +
+                    "Sintoma = :sin" +
+                    "WHERE IdFicha = ':id'";
+            query = query.replace(":com", fd.getComentario());
+            query = query.replace(":tej", Integer.toString(fd.getTiempoEjercicio()));
+            query = query.replace(":sin", Integer.toString(fd.getSintoma().getIdSintoma()));
+            query = query.replace(":id", Integer.toString(fd.getIdFicha()));
             int result = st.executeUpdate(query);
             con.close();
             return (result != -1);

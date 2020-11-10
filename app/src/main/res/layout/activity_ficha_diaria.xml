@@ -108,13 +108,16 @@
         android:id="@+id/txtAnotaciones"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="156dp"
         android:ems="10"
         android:gravity="start|top"
         android:hint="Comentario..."
         android:inputType="textMultiLine"
         android:lines="4"
         android:singleLine="false"
-        tools:layout_editor_absoluteX="15dp"
-        tools:layout_editor_absoluteY="468dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.079"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -26,8 +26,6 @@ public class MainActivity extends AppCompatActivity {
         UsuariosGestion ug = new UsuariosGestion();
         Usuario currentUser = ug.read();
         if(currentUser == null){
-            SyncDatabase syncdb = new SyncDatabase();
-            syncdb.execute();
             Intent i = new Intent(this, RegistrarUsuarioActivity.class);
             startActivity(i);
         }else{

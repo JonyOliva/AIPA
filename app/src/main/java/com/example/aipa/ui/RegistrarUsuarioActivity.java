@@ -76,12 +76,6 @@ public class RegistrarUsuarioActivity extends AppCompatActivity {
                         user.setPeso(Float.parseFloat(Peso.getText().toString()));
                         user.setAltura(Float.parseFloat(Altura.getText().toString()));
                         ug.save(user);
-                        //Se programa la subida del backup
-                        final long horas = 72; //0.01 hs = 36 sec
-                        BackupUploadTimer backupUpload = new BackupUploadTimer(getApplicationContext());
-                        Timer timer = new Timer();
-                        long time = horas * 60 * 60 * 1000;
-                        timer.schedule(backupUpload, time/3, time);
                         //Toast.makeText(getApplicationContext(), "Usuario registrado correctamente", Toast.LENGTH_SHORT).show();
 
                             if(us.insertUser(user)) {
@@ -93,16 +87,7 @@ public class RegistrarUsuarioActivity extends AppCompatActivity {
                                 });
 
                             }
-                        //Toast.makeText(this, "Los campos ingresados no son válidos.", Toast.LENGTH_SHORT).show();
-
-
-                        SyncDatabase syncdb = new SyncDatabase();
-                        syncdb.execute();
-                        IngredientesSync is = new IngredientesSync();
-                        is.execute();
-                        //UploadBackUp upBKP = new UploadBackUp(getApplicationContext());
-                        //upBKP.execute();
-                        Intent i = new Intent(getApplicationContext(), MenuPrincipal.class);
+                        Intent i = new Intent(getApplicationContext(), UsuarioRegistrado.class);
                         startActivity(i);
                 }
             }

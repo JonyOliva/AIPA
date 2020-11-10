@@ -88,7 +88,8 @@ public class ConfiguracionActivity extends AppCompatActivity {
     }
 
     public void ReiniciarApp(View view){
-        ConfirmReset cr = new ConfirmReset();
+        View[] btns = new View[] {findViewById(R.id.btnReiniciar), findViewById(R.id.btnGuardar), findViewById(R.id.btnRealizarBackUp)};
+        ConfirmReset cr = new ConfirmReset(btns, findViewById(R.id.progressBar2));
         cr.show(getSupportFragmentManager(), null);
     }
 

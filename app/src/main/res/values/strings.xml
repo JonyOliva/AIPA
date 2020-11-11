@@ -10,4 +10,6 @@
     <string name="resetServer">Eliminar los registro almacenados en la nube</string>
     <string name="reset_positive">Continuar</string>
     <string name="reset_negative">Cancelar</string>
+    <string name="daily_log">Ficha Diaria</string>
+    <string name="ingredients">Ingredientes</string>
 </resources>

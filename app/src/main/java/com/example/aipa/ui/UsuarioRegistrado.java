@@ -50,10 +50,10 @@ public class UsuarioRegistrado extends AppCompatActivity {
                 this);
         sb.execute();
         //Se programa la subida del backup
-        final long horas = 72; //0.01 hs = 36 sec
-        BackupUploadTimer backupUpload = new BackupUploadTimer(getApplicationContext());
+        final long horas = 72;
+        BackupUploadTimer backupUpload = new BackupUploadTimer();
         Timer timer = new Timer();
         long time = horas * 60 * 60 * 1000;
-        timer.schedule(backupUpload, time/3, time);
+        timer.schedule(backupUpload, time/3, time); //delay 20000 = 20 sec
     }
 }

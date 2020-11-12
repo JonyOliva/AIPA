@@ -82,7 +82,7 @@ public class ConfiguracionActivity extends AppCompatActivity {
     }
 
     public void RealizarBackUp(View view){
-        UploadBackUp upBKP = new UploadBackUp(this);
+        UploadBackUp upBKP = new UploadBackUp();
         Toast.makeText(this, "Realizando BackUp", Toast.LENGTH_SHORT).show();
         upBKP.execute();
     }

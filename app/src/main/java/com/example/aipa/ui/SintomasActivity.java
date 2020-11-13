@@ -56,6 +56,7 @@ String today;
         sintoma.setIdSintoma(spSintomas.getSelectedItemPosition()+1);
         fichaAnterior.setSintoma(sintoma);
         fg.update(fichaAnterior);
+
         redirectMain();
     }
 

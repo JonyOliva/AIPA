@@ -7,5 +7,5 @@ import Models.Sintoma;
 public interface iSintomasService {
 
     public ArrayList<Sintoma> getAll();
-
+public Sintoma get(int id);
 }

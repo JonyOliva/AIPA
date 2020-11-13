@@ -37,4 +37,9 @@ public class Sintoma {
     public void setModificadorPuntaje(int modificadorPuntaje) {
         ModificadorPuntaje = modificadorPuntaje;
     }
+
+    @Override
+    public String toString() {
+        return Descripcion;
+    }
 }

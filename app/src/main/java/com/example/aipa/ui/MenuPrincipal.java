@@ -8,12 +8,21 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.aipa.R;
 
-public class MenuPrincipal extends AppCompatActivity {
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
+import Gestion.FichasGestion;
+
+
+public class MenuPrincipal extends AppCompatActivity {
+String today;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_principal);
+        today = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
+        verifySymptoms();
     }
 
     public void redirectConfig(View view){
@@ -25,6 +34,20 @@ public class MenuPrincipal extends AppCompatActivity {
         Intent i = new Intent(this, FichaDiariaActivity.class);
         startActivity(i);
     }
+
+    public void redirectCalendar(View view){
+        Intent i = new Intent(this, CalendarioActivity.class);
+        startActivity(i);
+    }
+
+   private void verifySymptoms(){
+    FichasGestion fs= new FichasGestion();
+    if (fs.getAnterior(today)!= null){
+        Intent i = new Intent(getApplicationContext(), SintomasActivity.class);
+        startActivity(i);
+    }
+
+}
 
 
 }

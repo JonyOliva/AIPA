@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.UsuarioRegistrado"></activity>
+        <activity android:name=".ui.SintomasActivity"></activity>
+        <activity android:name=".ui.UsuarioRegistrado" />
         <activity android:name=".ui.CalendarioActivity" />
         <activity android:name=".ui.MenuPrincipal" />
         <activity android:name=".ui.FichaDiariaActivity" />

@@ -9,5 +9,5 @@ public interface iFichasService {
 	public Boolean deleteAll(String email);
 	public Boolean save(FichaDiaria fd, String email);
 	public Boolean update(FichaDiaria fd);
-	public FichaDiaria getAnterior();
+
 }

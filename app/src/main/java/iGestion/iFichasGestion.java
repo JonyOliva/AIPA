@@ -10,5 +10,5 @@ public interface iFichasGestion {
     public Boolean deleteAll();
     public ArrayList<FichaDiaria> getAll();
     public  Boolean update(FichaDiaria ficha);
-    public FichaDiaria getAnterior();
+    public FichaDiaria getAnterior(String fecha);
 }

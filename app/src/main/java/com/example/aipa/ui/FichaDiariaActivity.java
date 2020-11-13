@@ -58,10 +58,6 @@ lblFecha.setText(today);
         ficha = new FichaDiaria();
         ficha.setFecha(today);
 
-        //Sintoma -1 seria indefinido
-        Sintoma sint = new Sintoma();
-        sint.setIdSintoma(-1);
-        ficha.setSintoma(sint);
         ficha.setTiempoEjercicio(Integer.parseInt(Ejercicio.getText().toString()));
         ficha.setComentario(Comentario.getText().toString());
 

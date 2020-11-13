@@ -10,4 +10,5 @@ public interface iIngredientesGestion {
     public ArrayList<Ingrediente> getIngredientesXFase(Integer fase);
     public ArrayList<Ingrediente> getIngredientesXFicha(Integer idficha);
     public Boolean deleteAll();
+    public Boolean update(Ingrediente ingrediente);
 }

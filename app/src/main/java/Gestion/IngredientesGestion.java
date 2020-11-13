@@ -94,6 +94,17 @@ public class IngredientesGestion extends BaseGestion implements iIngredientesGes
         return ingredientes;
     }
 
+    @Override
+    public Boolean update(Ingrediente ingrediente) {
+        ContentValues values = new ContentValues();
+        values.put("nombre", ingrediente.getNombre());
+        values.put("puntaje", ingrediente.getPuntaje());
+        values.put("fase", ingrediente.getFase().getNroFase());
+
+        long result;
+        result = db.update("Ingredientes", values,"idindrediente="+Integer.toString(ingrediente.getIdIngrediente()), new String[0]);
+        return (result != -1);
+    }
 
     @Override
     public Boolean deleteAll() {

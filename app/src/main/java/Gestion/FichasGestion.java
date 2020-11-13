@@ -65,7 +65,7 @@ public class FichasGestion extends BaseGestion implements iFichasGestion {
 
     @Override
     public FichaDiaria getAnterior(String date) {
-        String query = "select idficha, fecha, comentario, tiempoejercicio, idsintoma  from FichasDiarias where idsintoma=0 and fecha not like ':date'";
+        String query = "select idficha, fecha, comentario, tiempoejercicio, idsintoma  from FichasDiarias where idsintoma=0 and fecha <> ':date'";
         query = query.replace(":date", date);
         Cursor cursor = db.rawQuery(query, null);
         if(cursor.getCount() <= 0)

@@ -54,7 +54,7 @@ public class IngredientesGestion extends BaseGestion implements iIngredientesGes
     @Override
     public ArrayList<Ingrediente> getIngredientesXFase(Integer fase) {
         ArrayList<Ingrediente> ingredientes = new ArrayList<Ingrediente>();
-        String query = "Select idingrediente, nombre, puntaje, fase from Ingredientes WHERE fase ="+fase;
+        String query = "Select idingrediente, nombre, puntaje, fase from Ingredientes WHERE fase <="+fase;
         Cursor cursor = db.rawQuery(query, null);
         if(cursor.getCount() <= 0)
             return null;
@@ -70,6 +70,39 @@ public class IngredientesGestion extends BaseGestion implements iIngredientesGes
         }
         cursor.close();
         return ingredientes;
+    }
+
+    @Override
+    public ArrayList<Ingrediente> getIngredientesXFicha(Integer idficha) {
+        ArrayList<Ingrediente> ingredientes = new ArrayList<Ingrediente>();
+        String query = "Select i.idingrediente, i.nombre, i.puntaje, i.fase from Ingredientes i inner join IngredientesXFicha ig ON i.idsintoma=ig.idsintoma WHERE ig.idficha ="+idficha;
+        Cursor cursor = db.rawQuery(query, null);
+        if(cursor.getCount() <= 0)
+            return null;
+        if(cursor.moveToFirst()){
+            do {
+                Ingrediente ing = new Ingrediente();
+                ing.setIdIngrediente(cursor.getInt(0));
+                ing.setNombre(cursor.getString(1));
+                ing.setPuntaje(cursor.getInt(2));
+                ing.setFase(new Fase(cursor.getInt(3), ""));
+                ingredientes.add(ing);
+            }while(cursor.moveToNext());
+        }
+        cursor.close();
+        return ingredientes;
+    }
+
+    @Override
+    public Boolean update(Ingrediente ingrediente) {
+        ContentValues values = new ContentValues();
+        values.put("nombre", ingrediente.getNombre());
+        values.put("puntaje", ingrediente.getPuntaje());
+        values.put("fase", ingrediente.getFase().getNroFase());
+
+        long result;
+        result = db.update("Ingredientes", values,"idindrediente="+Integer.toString(ingrediente.getIdIngrediente()), new String[0]);
+        return (result != -1);
     }
 
     @Override

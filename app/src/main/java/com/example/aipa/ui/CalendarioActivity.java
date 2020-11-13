@@ -67,14 +67,13 @@ public class CalendarioActivity extends AppCompatActivity {
                     textView.setBackgroundColor(Color.TRANSPARENT);
                     return;
                 }
+                System.out.println("ficha:" + fd.getFecha());
                 textView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Toast.makeText(getApplicationContext(), "ficha diaria", Toast.LENGTH_SHORT).show();
-
-                      //Pasar fecha en forma dd-MM-yyyy
-                        // redirectDailylog(fecha);
-
+                        Intent i = new Intent(getApplicationContext(), FichaAnteriorActivity.class);
+                        i.putExtra("fecha", calendarDay.getDate().toString());
+                        startActivity(i);
                     }
                 });
                 int coloropc = fd.getSintoma().getIdSintoma();

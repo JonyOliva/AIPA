@@ -8,6 +8,23 @@
     android:windowSoftInputMode="adjustNothing"
     >
 
+    <ScrollView
+        android:id="@+id/scrIngredientes"
+        android:layout_width="375dp"
+        android:layout_height="164dp"
+        android:layout_marginStart="16dp"
+
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblIngredientes">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
+
     <TextView
         android:id="@+id/lblFecha"
         android:layout_width="wrap_content"
@@ -36,110 +53,24 @@
         android:id="@+id/lblIngredientes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="76dp"
-        android:text="@string/ingredients"
+        android:layout_marginTop="32dp"
+        android:text="Alimentos consumidos"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.054"
+        app:layout_constraintHorizontal_bias="0.084"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblFichaDiaria" />
+        app:layout_constraintTop_toBottomOf="@+id/btnSave" />
 
     <Button
         android:id="@+id/btnAgregar"
-        android:layout_width="56dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="68dp"
-        android:text="+"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.125"
-        app:layout_constraintStart_toEndOf="@+id/lblIngredientes"
-        app:layout_constraintTop_toBottomOf="@+id/lblFichaDiaria" />
-
-    <ScrollView
-        android:id="@+id/scrIngredientes"
-        android:layout_width="415dp"
-        android:layout_height="88dp"
-        android:layout_marginTop="108dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblFichaDiaria"
-
-        >
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" />
-    </ScrollView>
-
-    <Button
-        android:id="@+id/btnPlus"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="52dp"
-        android:layout_marginRight="52dp"
-        android:background="@drawable/button_plus"
-        android:onClick="Plus"
-        android:text="+"
-        android:textColor="#FFFFFF"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.075"
-        app:layout_constraintStart_toEndOf="@+id/txtTiempoDeEjercicio"
-        app:layout_constraintTop_toBottomOf="@+id/lblEjercicio" />
-
-    <EditText
-        android:id="@+id/txtTiempoDeEjercicio"
-        android:layout_width="110dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="36dp"
-        android:ems="10"
-        android:inputType="number"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.217"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblEjercicio" />
-
-    <Button
-        android:id="@+id/btnMinus"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="32dp"
-        android:background="@drawable/button_minus"
-        android:onClick="Minus"
-        android:text="-"
-        android:textColor="#FFFFFF"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toStartOf="@+id/txtTiempoDeEjercicio"
-        app:layout_constraintHorizontal_bias="0.423"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblEjercicio" />
-
-    <TextView
-        android:id="@+id/lblEjercicio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Tiempo de Ejercicio"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrIngredientes" />
-
-    <TextView
-        android:id="@+id/lblAnotaciones"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="144dp"
+        android:layout_height="39dp"
         android:layout_marginTop="24dp"
-        android:text="Anotaciones"
-        android:textSize="18sp"
+        android:text="Agregar "
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtTiempoDeEjercicio" />
+        app:layout_constraintHorizontal_bias="0.317"
+        app:layout_constraintStart_toEndOf="@+id/lblIngredientes"
+        app:layout_constraintTop_toBottomOf="@+id/btnSave" />
 
     <EditText
         android:id="@+id/txtAnotaciones"
@@ -154,20 +85,22 @@
         android:singleLine="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.347"
+        app:layout_constraintHorizontal_bias="0.434"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lblAnotaciones"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.056" />
 
     <TextView
-        android:id="@+id/lblDate"
+        android:id="@+id/lblEjercicio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
+        android:text="Tiempo de Ejercicio"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.266"
-        app:layout_constraintStart_toEndOf="@+id/lblFecha"
-        app:layout_constraintTop_toBottomOf="@+id/lblFichaDiaria" />
+        app:layout_constraintHorizontal_bias="0.078"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblFecha" />
 
     <Button
         android:id="@+id/btnSave"
@@ -182,17 +115,79 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtAnotaciones"
-        app:layout_constraintVertical_bias="0.125" />
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/lblAnotaciones"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Anotaciones"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.074"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtTiempoDeEjercicio" />
+
+    <Button
+        android:id="@+id/btnPlus"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="52dp"
+        android:layout_marginRight="52dp"
+        android:background="@drawable/button_plus"
+        android:onClick="Plus"
+        android:text="+"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/txtTiempoDeEjercicio"
+        tools:layout_editor_absoluteY="121dp" />
+
+    <EditText
+        android:id="@+id/txtTiempoDeEjercicio"
+        android:layout_width="77dp"
+        android:layout_height="50dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.676"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="121dp" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
         android:text="Minutos"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.111"
+        app:layout_constraintHorizontal_bias="0.529"
         app:layout_constraintStart_toEndOf="@+id/btnPlus"
-        app:layout_constraintTop_toBottomOf="@+id/lblEjercicio" />
+        tools:layout_editor_absoluteY="133dp" />
+
+    <Button
+        android:id="@+id/btnMinus"
+        android:layout_width="36dp"
+        android:layout_height="38dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginRight="4dp"
+        android:background="@drawable/button_minus"
+        android:onClick="Minus"
+        android:text="-"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/txtTiempoDeEjercicio"
+        tools:layout_editor_absoluteY="123dp" />
+
+    <TextView
+        android:id="@+id/lblDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.266"
+        app:layout_constraintStart_toEndOf="@+id/lblFecha"
+        app:layout_constraintTop_toBottomOf="@+id/lblFichaDiaria" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

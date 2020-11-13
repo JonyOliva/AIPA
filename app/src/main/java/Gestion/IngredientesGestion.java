@@ -55,7 +55,7 @@ public class IngredientesGestion extends BaseGestion implements iIngredientesGes
     @Override
     public ArrayList<Ingrediente> getIngredientesXFase(Integer fase) {
         ArrayList<Ingrediente> ingredientes = new ArrayList<Ingrediente>();
-        String query = "Select idingrediente, nombre, puntaje, fase from Ingredientes WHERE fase ="+fase;
+        String query = "Select idingrediente, nombre, puntaje, fase from Ingredientes WHERE fase <="+fase;
         Cursor cursor = db.rawQuery(query, null);
         if(cursor.getCount() <= 0)
             return null;

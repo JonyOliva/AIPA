@@ -55,7 +55,7 @@ public class FichaDiariaActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
-        today = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
+        today = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
 
 lblFecha= (TextView)findViewById(R.id.lblDate);
 fill();
@@ -96,7 +96,7 @@ fill();
 
         FichasGestion fg = new FichasGestion();
         int tiempo= Integer.parseInt(Ejercicio.getText().toString());
-String comentarios = Comentario.getText().toString();
+        String comentarios = Comentario.getText().toString();
 
        if (ficha == null){
 

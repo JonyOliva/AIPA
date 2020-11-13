@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#8BC34A"
     tools:context=".ui.SintomasActivity">
 
     <TextView
@@ -12,6 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="124dp"
         android:text="¿Como te sentiste el día: "
+        android:textColor="#FFFFFF"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,6 +27,7 @@
         android:layout_marginEnd="156dp"
         android:layout_marginRight="156dp"
         android:text="?"
+        android:textColor="#FFFFFF"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
@@ -36,6 +39,7 @@
         android:layout_marginTop="28dp"
         android:layout_marginEnd="60dp"
         android:layout_marginRight="60dp"
+        android:textColor="#FFFFFF"
         android:textSize="24sp"
         app:layout_constraintEnd_toStartOf="@+id/textView9"
         app:layout_constraintHorizontal_bias="0.908"
@@ -60,6 +64,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
         android:text="Seleccione intensidad de síntomas:"
+        android:textColor="#FFFFFF"
         android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.121"
@@ -72,9 +77,37 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
+        android:background="#FFFFFF"
         android:onClick="guardarSintomas"
+        android:shadowColor="#009688"
         android:text="@string/accept"
+        android:textColor="#8BC34A"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spSintomas" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="48dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="116dp"
+        android:layout_marginLeft="116dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="?android:attr/textSelectHandleLeft" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="106dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="40dp"
+        android:gravity="center"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/app_name" />
 </androidx.constraintlayout.widget.ConstraintLayout>

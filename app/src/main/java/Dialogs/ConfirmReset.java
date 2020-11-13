@@ -37,7 +37,7 @@ public class ConfirmReset extends DialogFragment {
     Button[] btns;
     ProgressBar progressBar;
     public ConfirmReset(View[] btn, View _progressBar) {
-        btns = new Button[] {(Button) btn[0], (Button) btn[1], (Button) btn[2]};
+        btns = new Button[] {(Button) btn[0], (Button) btn[1], (Button) btn[2], (Button) btn[3]};
         progressBar = (ProgressBar) _progressBar;
     }
 

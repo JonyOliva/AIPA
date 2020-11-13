@@ -1,5 +1,7 @@
 package iGestion;
 
+import java.util.ArrayList;
+
 import Models.Fase;
 
 public interface iFasesGestion {

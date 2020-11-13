@@ -9,4 +9,5 @@ public interface iIngredientesGestion {
     public Boolean save(Ingrediente ingrediente);
     public ArrayList<Ingrediente> getIngredientesXFase(Integer fase);
     public Boolean deleteAll();
+    public Boolean existByName(String name);
 }

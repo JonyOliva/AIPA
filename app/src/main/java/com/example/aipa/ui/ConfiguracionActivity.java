@@ -1,5 +1,6 @@
 package com.example.aipa.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -88,9 +89,14 @@ public class ConfiguracionActivity extends AppCompatActivity {
     }
 
     public void ReiniciarApp(View view){
-        View[] btns = new View[] {findViewById(R.id.btnReiniciar), findViewById(R.id.btnGuardar), findViewById(R.id.btnRealizarBackUp)};
+        View[] btns = new View[] {findViewById(R.id.btnReiniciar), findViewById(R.id.btnGuardar), findViewById(R.id.btnRealizarBackUp), findViewById(R.id.btnNuevoIngrAgregar)};
         ConfirmReset cr = new ConfirmReset(btns, findViewById(R.id.progressBar2));
         cr.show(getSupportFragmentManager(), null);
+    }
+
+    public void AgregarIngrediente(View view){
+        Intent i = new Intent(getApplicationContext(),NuevoIngrediente.class);
+        startActivity(i);
     }
 
     public boolean Validar(){

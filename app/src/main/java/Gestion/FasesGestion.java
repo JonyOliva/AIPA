@@ -17,6 +17,8 @@ public class FasesGestion extends BaseGestion implements iFasesGestion {
         return (result != -1);
     }
 
+
+
     @Override
     public Boolean deleteAll() {
         int res = db.delete("Fases", null, null);

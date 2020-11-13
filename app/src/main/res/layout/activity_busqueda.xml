@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#2B2B2B"
     android:visibility="visible"
     tools:context=".ui.BusquedaActivity">
 
@@ -12,7 +11,6 @@
         android:id="@+id/listIngredientes"
         android:layout_width="331dp"
         android:layout_height="444dp"
-        android:entries="@array/ingredientes"
         android:isScrollContainer="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

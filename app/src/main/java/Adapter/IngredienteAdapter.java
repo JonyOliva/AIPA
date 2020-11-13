@@ -50,7 +50,7 @@ public class IngredienteAdapter extends RecyclerView.Adapter<IngredienteAdapter.
         final Ingrediente ing = lstIngrediente.get(position);
         final IngredienteAdapter.ViewHolder ingAdapter= (IngredienteAdapter.ViewHolder) holder;
         String nombre = ing.getNombre();
-        Integer puntaje = 5;//ing.getPuntaje();
+        Integer puntaje = ing.getPuntaje();
         holder.txtNombre.setText(ing.getNombre());
 
         if(puntaje < 2) {

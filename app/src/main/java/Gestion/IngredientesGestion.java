@@ -43,7 +43,6 @@ public class IngredientesGestion extends BaseGestion implements iIngredientesGes
     @Override
     public Boolean save(Ingrediente ingrediente) {
         ContentValues values = new ContentValues();
-        values.put("idingrediente", ingrediente.getIdIngrediente());
         values.put("nombre", ingrediente.getNombre());
         values.put("puntaje", ingrediente.getPuntaje());
         values.put("fase", ingrediente.getFase().getNroFase());
@@ -77,6 +76,17 @@ public class IngredientesGestion extends BaseGestion implements iIngredientesGes
     public Boolean deleteAll() {
         int res = db.delete("Ingredientes", null, null);
         return res > 0;
+    }
+
+    @Override
+    public Boolean existByName(String name) {
+        String query = "Select idingrediente, nombre, puntaje, fase from Ingredientes WHERE nombre ='"+name+"'";
+        Cursor cursor = db.rawQuery(query, null);
+        Integer cant = cursor.getCount();
+        cursor.close();
+        if(cant > 0)
+            return true;
+        return false;
     }
 
 }

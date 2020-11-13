@@ -52,8 +52,8 @@ String today;
 
     public void guardarSintomas(View view){
 
-        SintomasService ss = new SintomasService();
-        Sintoma sintoma = ss.get(spSintomas.getSelectedItemPosition()+1);
+        Sintoma sintoma = new Sintoma();
+        sintoma.setIdSintoma(spSintomas.getSelectedItemPosition()+1);
         fichaAnterior.setSintoma(sintoma);
         fg.update(fichaAnterior);
         redirectMain();

@@ -96,6 +96,7 @@ fill();
 
         FichasGestion fg = new FichasGestion();
         int tiempo= Integer.parseInt(Ejercicio.getText().toString());
+String comentarios = Comentario.getText().toString();
 
        if (ficha == null){
 
@@ -103,15 +104,19 @@ fill();
         ficha.setFecha(today);
         if (tiempo>=0 && tiempo <=500){
             ficha.setTiempoEjercicio(tiempo);
-            ficha.setComentario(Comentario.getText().toString());
+            if (comentarios.isEmpty())
+            {ficha.setComentario(""); }
+        else{ficha.setComentario(comentarios);}
 
-            /*Corregir*/
-            SintomasService ss = new SintomasService();
-            ficha.setSintoma(ss.get(0));
+
+            Sintoma sint = new Sintoma();
+            sint.setIdSintoma(0);
+            ficha.setSintoma(sint);
 
 
             try {
                 fg.save(ficha);
+                Toast.makeText(getApplicationContext(), "Cambios Guardados", Toast.LENGTH_SHORT).show();
             }
             catch (Exception e){
                 e.printStackTrace();
@@ -126,9 +131,11 @@ fill();
        else {
            if (tiempo>=0 && tiempo <=500){
            ficha.setTiempoEjercicio(tiempo);
+
            ficha.setComentario(Comentario.getText().toString());
                try {
                    fg.update(ficha);
+                   Toast.makeText(getApplicationContext(), "Cambios Guardados", Toast.LENGTH_SHORT).show();
                }
                catch (Exception e){
                    e.printStackTrace();

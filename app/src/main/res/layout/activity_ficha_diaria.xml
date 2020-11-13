@@ -81,6 +81,7 @@
         android:layout_marginEnd="52dp"
         android:layout_marginRight="52dp"
         android:background="@drawable/button_plus"
+        android:onClick="Plus"
         android:text="+"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
@@ -91,8 +92,8 @@
 
     <EditText
         android:id="@+id/txtTiempoDeEjercicio"
-        android:layout_width="108dp"
-        android:layout_height="36dp"
+        android:layout_width="110dp"
+        android:layout_height="48dp"
         android:layout_marginTop="36dp"
         android:ems="10"
         android:inputType="number"
@@ -107,6 +108,7 @@
         android:layout_height="40dp"
         android:layout_marginTop="32dp"
         android:background="@drawable/button_minus"
+        android:onClick="Minus"
         android:text="-"
         android:textColor="#FFFFFF"
         android:textSize="24sp"

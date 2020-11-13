@@ -30,6 +30,7 @@ public class GetSintomas extends AsyncTask <String, Void, String> {
         try{
             SintomasService sg = new SintomasService();
             listaSintomas = sg.getAll();
+            listaSintomas.remove(0);
             for (Sintoma s:
                 listaSintomas) {
                 listaNombres.add(s.toString());

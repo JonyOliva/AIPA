@@ -1,5 +1,6 @@
 package com.example.aipa.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -19,6 +20,7 @@ import Gestion.FichasGestion;
 import Gestion.SintomasGestion;
 import Models.FichaDiaria;
 import Models.Sintoma;
+import Service.SintomasService;
 
 public class FichaDiariaActivity extends AppCompatActivity {
 
@@ -29,6 +31,7 @@ public class FichaDiariaActivity extends AppCompatActivity {
     Button btnMinus;
     String today;
     TextView lblFecha;
+    FichaDiaria ficha;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,36 +45,113 @@ public class FichaDiariaActivity extends AppCompatActivity {
         btnPlus = (Button)findViewById(R.id.btnPlus);
         today = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
 lblFecha= (TextView)findViewById(R.id.lblDate);
-lblFecha.setText(today);
+fill();
 
-       // Toast.makeText(getApplicationContext(), today, Toast.LENGTH_SHORT).show();
     }
 
+    private void fill(){
+        lblFecha.setText(today);
+        if (getFicha()){
+            Ejercicio.setText(Integer.toString(ficha.getTiempoEjercicio()));
+            Comentario.setText(ficha.getComentario());}
+        else {
+            Ejercicio.setText("0");
+
+        }
+    }
+
+    public boolean getFicha(){
+        try {
+            FichasGestion fg = new FichasGestion();
+            ficha = fg.get(today);
+            if (ficha != null){
+                return true;
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+        return false;
+    }
 
     public void guardarFicha(View view){
 
         FichasGestion fg = new FichasGestion();
-        FichaDiaria ficha = fg.get(today);
+        int tiempo= Integer.parseInt(Ejercicio.getText().toString());
 
        if (ficha == null){
 
         ficha = new FichaDiaria();
         ficha.setFecha(today);
+        if (tiempo>=0 && tiempo <=500){
+            ficha.setTiempoEjercicio(tiempo);
+            ficha.setComentario(Comentario.getText().toString());
 
-        ficha.setTiempoEjercicio(Integer.parseInt(Ejercicio.getText().toString()));
-        ficha.setComentario(Comentario.getText().toString());
+            /*Corregir*/
+            SintomasService ss = new SintomasService();
+            ficha.setSintoma(ss.get(0));
 
-         fg.save(ficha);
-       }
+
+            try {
+                fg.save(ficha);
+            }
+            catch (Exception e){
+                e.printStackTrace();
+                Toast.makeText(getApplicationContext(), "Sucedió un error", Toast.LENGTH_SHORT).show();
+            }
+             }
+        else {
+            Toast.makeText(getApplicationContext(), "Tiempo de Ejercicio inválido", Toast.LENGTH_SHORT).show();
+        }
+               }
 
        else {
-           ficha.setTiempoEjercicio(Integer.parseInt(Ejercicio.getText().toString()));
+           if (tiempo>=0 && tiempo <=500){
+           ficha.setTiempoEjercicio(tiempo);
            ficha.setComentario(Comentario.getText().toString());
-       fg.update(ficha);
+               try {
+                   fg.update(ficha);
+               }
+               catch (Exception e){
+                   e.printStackTrace();
+                   Toast.makeText(getApplicationContext(), "Sucedió un error", Toast.LENGTH_SHORT).show();
+               }
 
+           }
+           else {
+               Toast.makeText(getApplicationContext(), "Tiempo de Ejercicio inválido", Toast.LENGTH_SHORT).show();
+           }
        }
 
 
     }
+
+    public void Minus(View view){
+        int nro= Integer.parseInt(Ejercicio.getText().toString());
+        if (nro>0){
+            nro--;
+            Ejercicio.setText(Integer.toString(nro));
+        }
+        else
+        {Toast.makeText(getApplicationContext(), "No puede ingresar números negativos", Toast.LENGTH_SHORT).show();}
+    }
+
+    public void Plus (View view){
+        int nro= Integer.parseInt(Ejercicio.getText().toString());
+        if (nro<500){
+            nro++;
+            Ejercicio.setText(Integer.toString(nro));
+        }
+        else
+        {Toast.makeText(getApplicationContext(), "Máximo 500", Toast.LENGTH_SHORT).show();}
+
+    }
+
+    public void redirectMain(View view){
+        Intent i = new Intent(getApplicationContext(), MenuPrincipal.class);
+        startActivity(i);
+    }
+
 
 }

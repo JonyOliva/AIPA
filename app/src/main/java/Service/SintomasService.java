@@ -41,17 +41,22 @@ public class SintomasService extends BaseService implements iSintomasService {
         try{
             Sintoma sin = new Sintoma();
             Statement st = con.createStatement();
-            String query = "SELECT idsintoma, descripcion, modpuntaje FROM Sintomas where idsintoma="+id;
+            String query = "SELECT idsintoma, descripcion, modpuntaje FROM Sintomas where idsintoma=':id'";
+            query = query.replace(":id", Integer.toString(id));
             ResultSet rs = st.executeQuery(query);
-            while(rs.next()) {
+           if(rs.next()) {
 
                 sin.setIdSintoma(rs.getInt("idsintoma"));
                 sin.setDescripcion(rs.getString("descripcion"));
                 sin.setModificadorPuntaje(rs.getInt("modpuntaje"));
+               con.close();
+               return sin;
+            }else {
+               rs.close();
+               con.close();
+               return null;
+           }
 
-            }
-            con.close();
-            return sin;
         }catch (Exception e){
             e.printStackTrace();
             return null;

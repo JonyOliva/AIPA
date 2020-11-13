@@ -75,7 +75,7 @@ public class IngredientesGestion extends BaseGestion implements iIngredientesGes
     @Override
     public ArrayList<Ingrediente> getIngredientesXFicha(Integer idficha) {
         ArrayList<Ingrediente> ingredientes = new ArrayList<Ingrediente>();
-        String query = "Select i.idingrediente, i.nombre, i.puntaje, i.fase from Ingredientes i inner join IngredientesXFicha ig ON i.idsintoma=ig.idsintoma WHERE ig.idficha ="+idficha;
+        String query = "Select i.idingrediente, i.nombre, i.puntaje, i.fase from Ingredientes i inner join IngredientesXFicha ig ON i.idingrediente=ig.idingrediente WHERE ig.idficha ="+idficha;
         Cursor cursor = db.rawQuery(query, null);
         if(cursor.getCount() <= 0)
             return null;

@@ -194,7 +194,7 @@ fillIngredients();
 
         if (listaingredientes!=null){
 
-       ArrayAdapter adapter = new ArrayAdapter<Ingrediente>(this,R.layout.lista_ingredientes,listaingredientes);
+       ArrayAdapter adapter = new ArrayAdapter<Ingrediente>(this, android.R.layout.simple_list_item_1,listaingredientes);
         lstIngredientes.setAdapter(adapter); }
     }
 

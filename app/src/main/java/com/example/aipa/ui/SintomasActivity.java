@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.aipa.R;
 
 import android.app.Application;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -44,6 +45,9 @@ String today;
     public void getFicha(){
         fg = new FichasGestion();
         fichaAnterior = fg.getAnterior(today);
+        if (fichaAnterior == null){
+          redirectMain();
+        }
     }
 
     public void guardarSintomas(View view){
@@ -52,6 +56,12 @@ String today;
         Sintoma sintoma = ss.get(spSintomas.getSelectedItemPosition()+1);
         fichaAnterior.setSintoma(sintoma);
         fg.update(fichaAnterior);
+        redirectMain();
+    }
+
+    public void redirectMain(){
+        Intent i = new Intent(getApplicationContext(), SintomasActivity.class);
+        startActivity(i);
     }
 
 }

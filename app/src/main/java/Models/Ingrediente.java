@@ -9,6 +9,11 @@ public class Ingrediente {
     public Ingrediente() {
     }
 
+    @Override
+    public String toString() {
+        return Nombre;
+    }
+
     public Ingrediente(int idIngrediente, String nombre, int puntaje, Fase fase) {
         IdIngrediente = idIngrediente;
         Nombre = nombre;

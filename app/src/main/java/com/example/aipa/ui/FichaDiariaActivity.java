@@ -3,8 +3,10 @@ package com.example.aipa.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -13,12 +15,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.aipa.R;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
 import Gestion.FichasGestion;
+import Gestion.IngredientesGestion;
 import Gestion.SintomasGestion;
 import Models.FichaDiaria;
+import Models.Ingrediente;
 import Models.Sintoma;
 import Service.SintomasService;
 
@@ -33,6 +38,7 @@ public class FichaDiariaActivity extends AppCompatActivity {
     String today;
     TextView lblFecha;
     FichaDiaria ficha;
+    ListView lstIngredientes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +51,8 @@ public class FichaDiariaActivity extends AppCompatActivity {
         btnMinus = (Button)findViewById(R.id.btnMinus);
         btnPlus = (Button)findViewById(R.id.btnPlus);
         btnAgregar = (Button) findViewById(R.id.btnAgregar);
+        lstIngredientes = (ListView)findViewById(R.id.lstIngredientes);
+
         btnAgregar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,7 +78,10 @@ fill();
         lblFecha.setText(today);
         if (getFicha()){
             Ejercicio.setText(Integer.toString(ficha.getTiempoEjercicio()));
-            Comentario.setText(ficha.getComentario());}
+            Comentario.setText(ficha.getComentario());
+fillIngredients();
+
+        }
         else {
             Ejercicio.setText("0");
 
@@ -175,6 +186,16 @@ fill();
     public void redirectMain(View view){
         Intent i = new Intent(getApplicationContext(), MenuPrincipal.class);
         startActivity(i);
+    }
+
+    public void fillIngredients(){
+        IngredientesGestion ig = new IngredientesGestion();
+        ArrayList <Ingrediente> listaingredientes = ig.getIngredientesXFicha(ficha.getIdFicha());
+
+        if (listaingredientes!=null){
+
+       ArrayAdapter adapter = new ArrayAdapter<Ingrediente>(this,R.layout.lista_ingredientes,listaingredientes);
+        lstIngredientes.setAdapter(adapter); }
     }
 
 

@@ -9,6 +9,7 @@ public interface iFichasGestion {
     public FichaDiaria get(String date);
     public Boolean deleteAll();
     public ArrayList<FichaDiaria> getAll();
-    public  Boolean update(FichaDiaria ficha);
+    public Boolean update(FichaDiaria ficha);
     public FichaDiaria getAnterior(String fecha);
+    public Integer getNextId();
 }

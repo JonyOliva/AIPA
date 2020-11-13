@@ -13,4 +13,5 @@
     <string name="daily_log">Ficha Diaria</string>
     <string name="ingredients">Ingredientes</string>
     <string name="accept">Aceptar</string>
+    <string name="buscador">Buscador de ingredientes</string>
 </resources>

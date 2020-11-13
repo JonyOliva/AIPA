@@ -7,6 +7,11 @@ public class IngredientesXFicha {
     public IngredientesXFicha() {
     }
 
+    public IngredientesXFicha(int idficha, int idingrediente) {
+        this.idficha =idficha;
+        this.idingrediente = idingrediente;
+    }
+
     public int getIdingrediente() {
         return idingrediente;
     }

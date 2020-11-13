@@ -82,6 +82,16 @@ public class FichasGestion extends BaseGestion implements iFichasGestion {
         return f;
     }
 
+    @Override
+    public Integer getNextId() {
+        String query = "SELECT idficha FROM FichasDiarias LIMIT 1";
+        Cursor cursor = db.rawQuery(query,null);
+        if (cursor.getCount() <= 0) return 1;
+        if(cursor.moveToFirst()){
+            return cursor.getInt(0) + 1;
+        }
+        return null;
+    }
 
 
     @Override

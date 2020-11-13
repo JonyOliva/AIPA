@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/llLista"
+    android:layout_width="match_parent"
+    android:layout_height="47dp"
+    android:paddingLeft="30dp"
+    android:background="?android:attr/colorBackground">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txtNombre_lista"
+        android:layout_width="310dp"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btnEstado"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@android:drawable/ic_notification_overlay" />
+
+</LinearLayout>

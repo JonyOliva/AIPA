@@ -60,7 +60,7 @@ String today;
     }
 
     public void redirectMain(){
-        Intent i = new Intent(getApplicationContext(), SintomasActivity.class);
+        Intent i = new Intent(getApplicationContext(), MenuPrincipal.class);
         startActivity(i);
     }
 

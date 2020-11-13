@@ -1,7 +1,9 @@
 package Gestion;
 
 import android.content.ContentValues;
+import android.database.Cursor;
 
+import java.util.ArrayList;
 import Models.Sintoma;
 import iGestion.iSintomasGestion;
 
@@ -22,6 +24,27 @@ public class SintomasGestion extends BaseGestion implements iSintomasGestion {
     public Boolean deleteAll() {
         int res = db.delete("Sintomas", null, null);
         return res > 0;
+    }
+
+    @Override
+    public ArrayList<Sintoma> getAll() {
+        ArrayList<Sintoma> sintomas = new ArrayList<Sintoma>();
+        String query = "Select idsintoma, descripcion, modpuntaje from Sintomas";
+        Cursor cursor = db.rawQuery(query, null);
+        if(cursor.getCount() <= 0)
+            return null;
+        if(cursor.moveToFirst()){
+            do {
+                Sintoma s = new Sintoma();
+                s.setIdSintoma(cursor.getInt(0));
+                s.setDescripcion(cursor.getString(1));
+                s.setModificadorPuntaje(cursor.getInt(2));
+
+                sintomas.add(s);
+            }while(cursor.moveToNext());
+        }
+        cursor.close();
+        return sintomas;
     }
 
 }

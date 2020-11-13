@@ -1,5 +1,6 @@
 package com.example.aipa.ui;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -70,6 +71,10 @@ public class CalendarioActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         Toast.makeText(getApplicationContext(), "ficha diaria", Toast.LENGTH_SHORT).show();
+
+                      //Pasar fecha en forma dd-MM-yyyy
+                        // redirectDailylog(fecha);
+
                     }
                 });
                 int coloropc = fd.getSintoma().getIdSintoma();
@@ -105,6 +110,12 @@ public class CalendarioActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void redirectDailylog(String fecha){
+        Intent i = new Intent(this, FichaDiariaActivity.class);
+        i.putExtra("fecha",fecha);
+        startActivity(i);
     }
 
 }

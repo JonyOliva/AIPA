@@ -14,6 +14,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".ui.SintomasActivity"></activity>
         <activity android:name=".ui.UsuarioRegistrado" />
+        <activity android:name=".ui.BusquedaActivity" />
         <activity android:name=".ui.CalendarioActivity" />
         <activity android:name=".ui.MenuPrincipal" />
         <activity android:name=".ui.FichaDiariaActivity" />

@@ -4,52 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#2B2B2B"
+    android:visibility="visible"
     tools:context=".ui.BusquedaActivity">
-
-    <TextView
-        android:id="@+id/tvBusqueda"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Busqueda de ingrediente"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023" />
-
-    <SearchView
-        android:id="@+id/svBusqueda"
-        android:layout_width="334dp"
-        android:layout_height="47dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.519"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.138" />
-
-    <Spinner
-        android:id="@+id/spIngrediente"
-        android:layout_width="329dp"
-        android:layout_height="42dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/svBusqueda"
-        app:layout_constraintVertical_bias="0.034" />
 
     <ListView
         android:id="@+id/listIngredientes"
-        android:layout_width="325dp"
-        android:layout_height="411dp"
-        android:layout_marginTop="17dp"
+        android:layout_width="331dp"
+        android:layout_height="444dp"
         android:entries="@array/ingredientes"
+        android:isScrollContainer="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spIngrediente"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="@+id/rvLista">
+
+    </ListView>
 
     <Button
         android:id="@+id/btnAgregarIngrediente"
@@ -57,10 +28,17 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="Agregar ingredientes"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.768"
+        app:layout_constraintHorizontal_bias="0.782"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/listIngredientes"
         app:layout_constraintVertical_bias="0.0" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvLista"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

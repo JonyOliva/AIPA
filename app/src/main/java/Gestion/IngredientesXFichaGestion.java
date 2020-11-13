@@ -49,6 +49,15 @@ public class IngredientesXFichaGestion extends BaseGestion implements iIngredien
     }
 
     @Override
+    public Boolean exist(IngredientesXFicha ixf) {
+        String query = "Select idingrediente,idficha from IngredientesXFicha WHERE idingrediente ="+ixf.getIdingrediente()+" AND idficha ="+ixf.getIdficha();
+        Cursor cursor = db.rawQuery(query, null);
+        if(cursor.getCount() <= 0)
+            return false;
+        return true;
+    }
+
+    @Override
     public Boolean deleteAll() {
         int res = db.delete("IngredientesXFicha", null, null);
         return res > 0;

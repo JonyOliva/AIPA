@@ -29,6 +29,7 @@ public class FichaDiariaActivity extends AppCompatActivity {
     Button btnGuardar;
     Button btnPlus;
     Button btnMinus;
+    Button btnAgregar;
     String today;
     TextView lblFecha;
     FichaDiaria ficha;
@@ -43,9 +44,25 @@ public class FichaDiariaActivity extends AppCompatActivity {
         btnGuardar = (Button)findViewById(R.id.btnSave);
         btnMinus = (Button)findViewById(R.id.btnMinus);
         btnPlus = (Button)findViewById(R.id.btnPlus);
+        btnAgregar = (Button) findViewById(R.id.btnAgregar);
+        btnAgregar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), BusquedaActivity.class);
+                FichasGestion fGestion = new FichasGestion();
+                Integer idFicha = fGestion.getNextId();
+                i.putExtra("idFicha", idFicha);
+                startActivity(i);
+            }
+        });
         today = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
+
 lblFecha= (TextView)findViewById(R.id.lblDate);
 fill();
+
+        lblFecha= (TextView)findViewById(R.id.lblDate);
+        lblFecha.setText(today);
+
 
     }
 

@@ -37,7 +37,7 @@ String today;
         txtFecha = (TextView)findViewById(R.id.txtFechaSintomas);
         GetSintomas addSymptoms = new GetSintomas(spSintomas, getApplicationContext());
         addSymptoms.execute();
-        today = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
+        today = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
         getFicha();
         txtFecha.setText(fichaAnterior.getFecha());
     }

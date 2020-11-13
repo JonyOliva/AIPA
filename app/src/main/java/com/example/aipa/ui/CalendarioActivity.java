@@ -40,7 +40,7 @@ public class CalendarioActivity extends AppCompatActivity {
         CalendarView calendarView = (CalendarView)findViewById(R.id.calendarView);
         YearMonth currentMonth = YearMonth.now();
         YearMonth firstMonth = currentMonth.minusMonths(12);
-        YearMonth lastMonth = currentMonth;
+        YearMonth lastMonth = currentMonth.plusMonths(1);
         DayOfWeek firstDayOfWeek = WeekFields.of(Locale.getDefault()).getFirstDayOfWeek();
         calendarView.setup(firstMonth, lastMonth, firstDayOfWeek);
         calendarView.scrollToMonth(currentMonth);

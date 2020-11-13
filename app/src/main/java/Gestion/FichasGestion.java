@@ -41,7 +41,7 @@ public class FichasGestion extends BaseGestion implements iFichasGestion {
         values.put("idsintoma", ficha.getSintoma().getIdSintoma());
 
         long result;
-        result = db.update("FichasDiarias", values,"", new String[0]);
+        result = db.update("FichasDiarias", values,"idficha="+Integer.toString(ficha.getIdFicha()), new String[0]);
         return (result != -1);
     }
 

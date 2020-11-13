@@ -73,7 +73,7 @@ public class BusquedaActivity extends AppCompatActivity implements SearchView.On
             }
         });
 
-        ingredientsFound = new IngredientesGestion().getIngredientesXFase(1);
+        ingredientsFound = new IngredientesGestion().getIngredientesXFase(user.getFase().getNroFase());
         ingAdapter = new IngredienteAdapter(ingredientsFound, selected, lvSelected, btnAgregar, getApplicationContext());
 
         rvLista = findViewById(R.id.rvLista);
@@ -91,7 +91,7 @@ public class BusquedaActivity extends AppCompatActivity implements SearchView.On
         item.setOnActionExpandListener(new MenuItem.OnActionExpandListener() {
             @Override
             public boolean onMenuItemActionExpand(MenuItem menuItem) {
-                ingAdapter.setFilter(new IngredientesGestion().getIngredientesXFase(1));
+                ingAdapter.setFilter(new IngredientesGestion().getIngredientesXFase(user.getFase().getNroFase()));
                 return true;
             }
 

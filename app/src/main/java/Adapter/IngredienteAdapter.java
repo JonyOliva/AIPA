@@ -50,13 +50,13 @@ public class IngredienteAdapter extends RecyclerView.Adapter<IngredienteAdapter.
         final Ingrediente ing = lstIngrediente.get(position);
         final IngredienteAdapter.ViewHolder ingAdapter= (IngredienteAdapter.ViewHolder) holder;
         String nombre = ing.getNombre();
-        Integer puntaje = 5;//ing.getPuntaje();
+        Integer puntaje = ing.getPuntaje();
         holder.txtNombre.setText(ing.getNombre());
 
-        if(puntaje < 2) {
+        if(puntaje <= 2) {
             holder.btnEstado.setBackgroundColor(context.getResources().getColor(R.color.verde));
         }
-        if(puntaje > 1 && puntaje < 4){
+        if(puntaje > 2 && puntaje <= 4){
             holder.btnEstado.setBackgroundColor(context.getResources().getColor(R.color.naranja));
         }
         if(puntaje > 4){

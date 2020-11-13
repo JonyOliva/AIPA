@@ -13,12 +13,16 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
 import AsyncTasks.GetSintomas;
 import Gestion.FichasGestion;
+import Gestion.IngredientesGestion;
+import Gestion.SintomasGestion;
 import Models.FichaDiaria;
+import Models.Ingrediente;
 import Models.Sintoma;
 import Service.SintomasService;
 
@@ -52,11 +56,26 @@ String today;
 
     public void guardarSintomas(View view){
 
-        Sintoma sintoma = new Sintoma();
-        sintoma.setIdSintoma(spSintomas.getSelectedItemPosition()+1);
+        SintomasGestion sg= new SintomasGestion();
+        IngredientesGestion ig = new IngredientesGestion();
+        Sintoma sintoma = sg.get(spSintomas.getSelectedItemPosition()+1);
+
+        //sintoma.setIdSintoma(spSintomas.getSelectedItemPosition()+1);
         fichaAnterior.setSintoma(sintoma);
         fg.update(fichaAnterior);
 
+        ArrayList<Ingrediente> listaingredientes = ig.getIngredientesXFicha(fichaAnterior.getIdFicha());
+
+        if (listaingredientes != null){
+        for (Ingrediente i:
+            listaingredientes ) {
+           int nuevopuntaje= i.getPuntaje() + sintoma.getModificadorPuntaje();
+           if(nuevopuntaje >=0 && nuevopuntaje<=5){
+               i.setPuntaje(nuevopuntaje);
+               ig.update(i);
+           }}
+
+        }
         redirectMain();
     }
 

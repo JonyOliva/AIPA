@@ -79,11 +79,12 @@ fill();
         if (getFicha()){
             Ejercicio.setText(Integer.toString(ficha.getTiempoEjercicio()));
             Comentario.setText(ficha.getComentario());
-fillIngredients();
+           fillIngredients();
 
         }
         else {
             Ejercicio.setText("0");
+            createFicha();
 
         }
     }
@@ -109,37 +110,6 @@ fillIngredients();
         int tiempo= Integer.parseInt(Ejercicio.getText().toString());
         String comentarios = Comentario.getText().toString();
 
-       if (ficha == null){
-
-        ficha = new FichaDiaria();
-        ficha.setFecha(today);
-        if (tiempo>=0 && tiempo <=500){
-            ficha.setTiempoEjercicio(tiempo);
-            if (comentarios.isEmpty())
-            {ficha.setComentario(""); }
-        else{ficha.setComentario(comentarios);}
-
-
-            Sintoma sint = new Sintoma();
-            sint.setIdSintoma(0);
-            ficha.setSintoma(sint);
-
-
-            try {
-                fg.save(ficha);
-                Toast.makeText(getApplicationContext(), "Cambios Guardados", Toast.LENGTH_SHORT).show();
-            }
-            catch (Exception e){
-                e.printStackTrace();
-                Toast.makeText(getApplicationContext(), "Sucedió un error", Toast.LENGTH_SHORT).show();
-            }
-             }
-        else {
-            Toast.makeText(getApplicationContext(), "Tiempo de Ejercicio inválido", Toast.LENGTH_SHORT).show();
-        }
-               }
-
-       else {
            if (tiempo>=0 && tiempo <=500){
            ficha.setTiempoEjercicio(tiempo);
 
@@ -160,7 +130,7 @@ fillIngredients();
        }
 
 
-    }
+
 
     public void Minus(View view){
         int nro= Integer.parseInt(Ejercicio.getText().toString());
@@ -198,5 +168,38 @@ fillIngredients();
         lstIngredientes.setAdapter(adapter); }
     }
 
+    public void createFicha(){
+        if (ficha == null){
+            FichasGestion fg = new FichasGestion();
+            String comentarios = Comentario.getText().toString();
+            int tiempo= Integer.parseInt(Ejercicio.getText().toString());
+            ficha = new FichaDiaria();
+            ficha.setFecha(today);
+            if (tiempo>=0 && tiempo <=500){
+                ficha.setTiempoEjercicio(tiempo);
+                if (comentarios.isEmpty())
+                {ficha.setComentario(""); }
+                else{ficha.setComentario(comentarios);}
+
+
+                Sintoma sint = new Sintoma();
+                sint.setIdSintoma(0);
+                ficha.setSintoma(sint);
+
+
+                try {
+                    fg.save(ficha);
+                    Toast.makeText(getApplicationContext(), "Cambios Guardados", Toast.LENGTH_SHORT).show();
+                }
+                catch (Exception e){
+                    e.printStackTrace();
+                    Toast.makeText(getApplicationContext(), "Sucedió un error", Toast.LENGTH_SHORT).show();
+                }
+            }
+            else {
+                Toast.makeText(getApplicationContext(), "Tiempo de Ejercicio inválido", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
 
 }

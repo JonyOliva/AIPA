@@ -189,7 +189,7 @@ fill();
 
                 try {
                     fg.save(ficha);
-                    Toast.makeText(getApplicationContext(), "Cambios Guardados", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "¡Bienvenido de nuevo!", Toast.LENGTH_SHORT).show();
                 }
                 catch (Exception e){
                     e.printStackTrace();

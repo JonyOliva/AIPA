@@ -46,8 +46,8 @@ public class SyncBackUp extends AsyncTask<Void, Integer, Boolean> {
         if(SyncUser()){
             SyncFichas();
             SyncIngredientesXficha();
+            db.setTransactionSuccessful();
         }
-        db.setTransactionSuccessful();
         db.endTransaction();
         Intent i = new Intent(context, MainActivity.class);
         context.startActivity(i);

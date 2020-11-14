@@ -28,6 +28,7 @@ public class NuevoIngrediente extends AppCompatActivity {
         setContentView(R.layout.activity_nuevo_ingrediente);
 
         spFases = (Spinner) findViewById(R.id.spFases);
+        spFases.setSelection(0);
         txtNombrNuevoIngrediente = (TextView) findViewById(R.id.txtNombreNuevoIngrediente);
         btnGuardar = (Button) findViewById(R.id.btnGuardarNuevoIngrediente);
         btnGuardar.setOnClickListener(new View.OnClickListener() {

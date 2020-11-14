@@ -70,6 +70,8 @@ String today;
         for (Ingrediente i:
             listaingredientes ) {
            int nuevopuntaje= i.getPuntaje() + sintoma.getModificadorPuntaje();
+           if(nuevopuntaje > 5) nuevopuntaje = 5;
+           if(nuevopuntaje < 0 ) nuevopuntaje = 0;
            if(nuevopuntaje >=0 && nuevopuntaje<=5){
                i.setPuntaje(nuevopuntaje);
                ig.update(i);

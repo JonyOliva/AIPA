@@ -10,21 +10,25 @@
         android:id="@+id/scrIngredientes"
         android:layout_width="410dp"
         android:layout_height="159dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="24dp"
 
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView18">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
             <ListView
                 android:id="@+id/lstFAingredientes"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="180dp" />
         </LinearLayout>
     </ScrollView>
 
@@ -56,7 +60,7 @@
         android:layout_height="20dp"
         android:layout_marginStart="244dp"
         android:layout_marginLeft="244dp"
-        android:layout_marginTop="132dp"
+        android:layout_marginTop="128dp"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView10" />

@@ -101,7 +101,7 @@ public class IngredientesGestion extends BaseGestion implements iIngredientesGes
         values.put("fase", ingrediente.getFase().getNroFase());
 
         long result;
-        result = db.update("Ingredientes", values,"idindrediente="+Integer.toString(ingrediente.getIdIngrediente()), new String[0]);
+        result = db.update("Ingredientes", values,"idingrediente="+Integer.toString(ingrediente.getIdIngrediente()), new String[0]);
         return (result != -1);
     }
 

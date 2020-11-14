@@ -36,6 +36,7 @@ public class UploadBackUp extends AsyncTask<Void, Integer, Boolean> {
         iUsuariosGestion ug = new UsuariosGestion();
         user = ug.read();
         res = res && upUser();
+        res = delete();
         res = res && upIngredientes();
         res = res && upFichas();
         res = res && upIngredientesxFicha();
@@ -52,7 +53,6 @@ public class UploadBackUp extends AsyncTask<Void, Integer, Boolean> {
         Boolean result = true;
         iFichasService fs = new FichasService();
         iFichasGestion fg = new FichasGestion();
-        fs.deleteAll(user.getEmail());
         ArrayList<FichaDiaria> fichas = fg.getAll();
         publishProgress(3);
         if(fichas != null){
@@ -73,7 +73,6 @@ public class UploadBackUp extends AsyncTask<Void, Integer, Boolean> {
         Boolean result = true;
         iIngredientesService is = new IngredientesService();
         iIngredientesGestion ig = new IngredientesGestion();
-        is.deleteAll(user.getEmail());
         ArrayList<Ingrediente> ingredientes = ig.getAll();
         publishProgress(2);
         if(ingredientes != null){
@@ -89,7 +88,6 @@ public class UploadBackUp extends AsyncTask<Void, Integer, Boolean> {
         Boolean result = true;
         iIngredientesXFichaService ixfs = new IngredientesXFichaService();
         iIngredientesXFichaGestion ixfg = new IngredientesXFichaGestion();
-        ixfs.deleteAll(user.getEmail());
         publishProgress(4);
         ArrayList<IngredientesXFicha> ixf = ixfg.getAll();
         if(ixf != null){
@@ -98,6 +96,22 @@ public class UploadBackUp extends AsyncTask<Void, Integer, Boolean> {
             }
         }
         return result;
+    }
+
+    private Boolean delete(){
+        try {
+            iIngredientesXFichaService ixfs = new IngredientesXFichaService();
+            ixfs.deleteAll(user.getEmail());
+            iIngredientesService is = new IngredientesService();
+            is.deleteAll(user.getEmail());
+            iFichasService fs = new FichasService();
+            fs.deleteAll(user.getEmail());
+            return true;
+        }catch (Exception e){
+            e.printStackTrace();
+            return  false;
+        }
+
     }
 
 }

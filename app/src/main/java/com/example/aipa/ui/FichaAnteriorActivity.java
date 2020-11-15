@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -46,6 +48,24 @@ lstIngredientes=(ListView)findViewById(R.id.lstFAingredientes);
             redirectCalendar();
         }
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.home_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.btnHome) {
+            Intent i = new Intent(this, MenuPrincipal.class);
+            startActivity(i);
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     public void fill(String fecha){

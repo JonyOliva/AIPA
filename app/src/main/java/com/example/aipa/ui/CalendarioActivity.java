@@ -3,6 +3,8 @@ package com.example.aipa.ui;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -109,6 +111,24 @@ public class CalendarioActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.home_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.btnHome) {
+            Intent i = new Intent(this, MenuPrincipal.class);
+            startActivity(i);
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     public void redirectDailylog(String fecha){

@@ -5,8 +5,8 @@
     <string name="fichaDiaria">Ficha Diaria</string>
     <string name="calendario">Calendario</string>
     <string name="config">Configuración</string>
-    <string name="reset">Se eliminarán de manera permanente todos los registro de la aplicación</string>
-    <string name="resetTitle">Reiniciar Aplicación</string>
+    <string name="reset">Esta función eliminará de manera permanente todos los registros locales de la aplicación, por esta razón se recomienda primero realizar un backup.\nEstá seguro que desea continuar?</string>
+    <string name="resetTitle">Cerrar sesión</string>
     <string name="resetServer">Eliminar los registro almacenados en la nube</string>
     <string name="reset_positive">Continuar</string>
     <string name="reset_negative">Cancelar</string>

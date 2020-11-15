@@ -7,6 +7,106 @@
     tools:context=".ui.CalendarioActivity">
 
     <TextView
+        android:id="@+id/txtcolor1"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:background="@color/verde"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.421"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtcaleninst"
+        app:layout_constraintVertical_bias="0.104" />
+
+    <TextView
+        android:id="@+id/txtint3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="Moderados"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.143"
+        app:layout_constraintStart_toEndOf="@+id/txtcolor1"
+        app:layout_constraintTop_toBottomOf="@+id/txtint2"
+        app:layout_constraintVertical_bias="0.032" />
+
+    <TextView
+        android:id="@+id/txtcolor3"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:background="@color/naranja"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.421"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtcolor2"
+        app:layout_constraintVertical_bias="0.036" />
+
+    <TextView
+        android:id="@+id/txtcolor2"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:background="@color/amarillo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.421"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtcolor1"
+        app:layout_constraintVertical_bias="0.032" />
+
+    <TextView
+        android:id="@+id/txtint1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="Ninguno"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.127"
+        app:layout_constraintStart_toEndOf="@+id/txtcolor1"
+        app:layout_constraintTop_toBottomOf="@+id/txtcaleninst"
+        app:layout_constraintVertical_bias="0.104" />
+
+    <TextView
+        android:id="@+id/txtint2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="Leves"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.122"
+        app:layout_constraintStart_toEndOf="@+id/txtcolor1"
+        app:layout_constraintTop_toBottomOf="@+id/txtint1"
+        app:layout_constraintVertical_bias="0.04" />
+
+    <TextView
+        android:id="@+id/txtint4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="Intensos"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.135"
+        app:layout_constraintStart_toEndOf="@+id/txtcolor1"
+        app:layout_constraintTop_toBottomOf="@+id/txtint3"
+        app:layout_constraintVertical_bias="0.059" />
+
+    <TextView
+        android:id="@+id/txtcolor4"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:background="@color/rojo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.421"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtcolor3"
+        app:layout_constraintVertical_bias="0.064" />
+
+    <TextView
         android:id="@+id/lblTitulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -29,6 +129,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblTitulo" />
+        app:layout_constraintTop_toBottomOf="@+id/lblTitulo" >
+
+    </com.kizitonwose.calendarview.CalendarView>
+
+    <TextView
+        android:id="@+id/txtcaleninst"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nivel de intensidad de los sintomas"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/calendarView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -17,7 +17,7 @@ public class SQLHelper extends SQLiteOpenHelper {
         SqlDatabase.execSQL("create table Sintomas(idsintoma integer primary key autoincrement, descripcion text, modpuntaje integer)");
         SqlDatabase.execSQL("create table Fases(nrofase integer primary key, descripcion text)");
         SqlDatabase.execSQL("create table Users (email text primary key, password text, nombre text, apellido text, peso real, altura real, nrofase integer, Constraint FKfaseu FOREIGN KEY (nrofase) REFERENCES Fases(nrofase))");
-        SqlDatabase.execSQL("create table Ingredientes(idingrediente integer primary key autoincrement, nombre text, puntaje integer, fase integer, Constraint FKfasei FOREIGN KEY (fase) REFERENCES Fases(nrofase))");
+        SqlDatabase.execSQL("create table Ingredientes(idingrediente integer primary key, nombre text, puntaje integer, fase integer, Constraint FKfasei FOREIGN KEY (fase) REFERENCES Fases(nrofase))");
         SqlDatabase.execSQL("create table FichasDiarias(idficha integer primary key autoincrement, fecha date, comentario text, tiempoejercicio real, idsintoma integer, Constraint FKsintomaf FOREIGN KEY (idsintoma) REFERENCES Sintomas(idsintoma))");
         SqlDatabase.execSQL("create table IngredientesXFicha(idingrediente integer, idficha integer, FOREIGN KEY(idingrediente) REFERENCES Ingredientes(idingrediente), FOREIGN KEY(idficha) REFERENCES FichasDiarias(idficha))");
     }

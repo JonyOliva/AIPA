@@ -122,8 +122,9 @@ public class RegistrarUsuarioActivity extends AppCompatActivity {
 
     public boolean ValidarFloat(){
         try {
-                Float.parseFloat(Peso.getText().toString());
-                Float.parseFloat(Altura.getText().toString());
+                Float peso = Float.parseFloat(Peso.getText().toString());
+                Float altura = Float.parseFloat(Altura.getText().toString());
+                if(peso > 645 || altura > 280) return  false;
                 return  true;
             } catch (NumberFormatException e) {
                 e.printStackTrace();

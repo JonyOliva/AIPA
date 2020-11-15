@@ -43,6 +43,7 @@ public class IngredientesGestion extends BaseGestion implements iIngredientesGes
     @Override
     public Boolean save(Ingrediente ingrediente) {
         ContentValues values = new ContentValues();
+        values.put("idingrediente", ingrediente.getIdIngrediente());
         values.put("nombre", ingrediente.getNombre());
         values.put("puntaje", ingrediente.getPuntaje());
         values.put("fase", ingrediente.getFase().getNroFase());

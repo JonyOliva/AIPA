@@ -1,5 +1,6 @@
 package com.example.aipa.ui;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,6 +18,9 @@ import AsyncTasks.BackupUploadTimer;
 import AsyncTasks.IngredientesSync;
 import AsyncTasks.SyncBackUp;
 import AsyncTasks.SyncDatabase;
+import Models.Usuario;
+import Service.UsuariosService;
+import iService.iUsuariosService;
 
 public class UsuarioRegistrado extends AppCompatActivity {
 
@@ -38,17 +42,40 @@ public class UsuarioRegistrado extends AppCompatActivity {
     }
 
     public void validarUsuario(View view){
-        if(Email.getText().toString().isEmpty() || Pass.getText().toString().isEmpty())
+        if(Email.getText().toString().isEmpty() || Pass.getText().toString().isEmpty()){
+            Toast.makeText(getApplicationContext(), "Los campos no deben estar vacios.", Toast.LENGTH_SHORT).show();
             return;
+        }
         btnLogin.setVisibility(View.GONE);
         prCircle.setVisibility(View.VISIBLE);
-        SyncDatabase syncdb = new SyncDatabase();
-        syncdb.execute();
-        IngredientesSync is = new IngredientesSync();
-        is.execute(Email.getText().toString());
-        SyncBackUp sb = new SyncBackUp(Email.getText().toString(), Pass.getText().toString(),
-                this);
-        sb.execute();
+        Context context = this;
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                iUsuariosService us = new UsuariosService();
+                Usuario user = us.getUser(Email.getText().toString(), Pass.getText().toString());
+                if(user == null){
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(getApplicationContext(), "Los datos ingresados son incorrectos.", Toast.LENGTH_SHORT).show();
+                            prCircle.setVisibility(View.GONE);
+                            btnLogin.setVisibility(View.VISIBLE);
+                        }
+                    });
+                }else{
+
+                    SyncDatabase syncdb = new SyncDatabase();
+                    syncdb.execute();
+                    IngredientesSync is = new IngredientesSync();
+                    is.execute(Email.getText().toString());
+                    SyncBackUp sb = new SyncBackUp(Email.getText().toString(), Pass.getText().toString(),
+                            context);
+                    sb.execute();
+                }
+            }
+        }).start();
+
         //Se programa la subida del backup
         final long horas = 72;
         BackupUploadTimer backupUpload = new BackupUploadTimer();
